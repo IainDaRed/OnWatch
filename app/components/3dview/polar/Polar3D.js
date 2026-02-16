@@ -9,8 +9,8 @@ import {
     oBlue, 
     oGreen, 
     oRed, 
-    useOcearoContext 
-} from '../../context/OcearoContext';
+    useonwatchContext 
+} from '../../context/onwatchContext';
 import { useSignalKPath, useSignalKPaths } from '../../hooks/useSignalK';
 
 // Constants
