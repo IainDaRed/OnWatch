@@ -1,10 +1,10 @@
-[![GitHub Issues](https://img.shields.io/github/issues/laborima/ocearo-ui.svg)](https://github.com/laborima/ocearo-ui/issues)
+[![GitHub Issues](https://img.shields.io/github/issues/laborima/onwatch-ui.svg)](https://github.com/laborima/onwatch-ui/issues)
 [![Contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![License](https://img.shields.io/badge/License-Apache%202.0-brightgreen.svg)](https://opensource.org/licenses/Apache-2.0)
 
 [Français 🇫🇷](README.fr.md)
 
-# Ocearo UI
+# onwatch UI
 
 **Sailing Made Smarter**
 
@@ -115,15 +115,15 @@ Ocean Robot's roadmap includes advanced features aimed at enhancing safety and e
   
 ---
 
-Check out the live demo: https://laborima.github.io/ocearo-ui/
+Check out the live demo: https://laborima.github.io/onwatch-ui/
 
-Or install it in Signal K using the NPM package: https://www.npmjs.com/package/ocearo-ui
+Or install it in Signal K using the NPM package: https://www.npmjs.com/package/onwatch-ui
 
 ---
 
 ## **Contributing**
 
-Your support and involvement make Ocearo UI better! Here are some ways you can contribute:
+Your support and involvement make onwatch UI better! Here are some ways you can contribute:
 
 - Report bugs: Help me squash issues by letting me know when something isn't working as expected.
 - Suggest features: Share your ideas for new features or improvements your feedback shapes the project!
@@ -141,8 +141,8 @@ Your support and involvement make Ocearo UI better! Here are some ways you can c
 Clone sources:
 
 ```bash
-git clone https://github.com/laborima/ocearo-ui.git
-cd ocearo-ui
+git clone https://github.com/laborima/onwatch-ui.git
+cd onwatch-ui
 ```
 
 Install dependencies:
@@ -182,11 +182,11 @@ The recommended way is to use the npm published package.
 If you want to deploy your own build:
 
 ```bash
-git clone https://github.com/laborima/ocearo-ui.git
-cd ocearo-ui
+git clone https://github.com/laborima/onwatch-ui.git
+cd onwatch-ui
 npm install
 NODE_ENV=production npm run build
-scp -r ./out/* pi@openplotter.local:/home/pi/.signalk/node_modules/ocearo-ui
+scp -r ./out/* pi@openplotter.local:/home/pi/.signalk/node_modules/onwatch-ui
 ```
 
 ---
@@ -195,10 +195,10 @@ scp -r ./out/* pi@openplotter.local:/home/pi/.signalk/node_modules/ocearo-ui
 
 Use with Caution – Not a Substitute for Official Navigation Systems
 
-Ocearo UI is designed to enhance sailing awareness and provide real-time data visualization. However, this software is not a certified navigation or safety system and should not be relied upon as the sole source of navigational information.
+onwatch UI is designed to enhance sailing awareness and provide real-time data visualization. However, this software is not a certified navigation or safety system and should not be relied upon as the sole source of navigational information.
 
 - Always cross-check data with official marine charts, GPS devices, and other navigation aids.
 - Maintain situational awareness and follow maritime safety regulations.
-- The developers of Ocearo UI are not liable for any incidents, accidents, or navigation errors that may arise from using this software.
+- The developers of onwatch UI are not liable for any incidents, accidents, or navigation errors that may arise from using this software.
 
-By using Ocearo UI, you acknowledge and accept the inherent risks of relying on non-certified navigation tools. Always navigate responsibly!
+By using onwatch UI, you acknowledge and accept the inherent risks of relying on non-certified navigation tools. Always navigate responsibly!
