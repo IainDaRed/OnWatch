@@ -55,7 +55,7 @@ export const SUPPORTED_LANGUAGES = [
 const getStoredLanguage = () => {
     try {
         if (typeof window !== 'undefined' && typeof localStorage !== 'undefined') {
-            const config = localStorage.getItem('ocearoConfig');
+            const config = localStorage.getItem('onwatchConfig');
             if (config) {
                 const parsed = JSON.parse(config);
                 return parsed.language || null;
@@ -79,7 +79,7 @@ i18n
         },
         detection: {
             order: ['localStorage', 'navigator'],
-            lookupLocalStorage: 'ocearo-language',
+            lookupLocalStorage: 'onwatch-language',
             caches: ['localStorage']
         }
     });
