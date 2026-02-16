@@ -3,7 +3,7 @@ import { extend, useThree, useLoader, useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import { Water } from "three/examples/jsm/objects/Water.js";
 import { Sky } from "three/examples/jsm/objects/Sky.js";
-import { useOcearoContext } from "../../context/OcearoContext";
+import { useonwatchContext } from "../../context/onwatchContext";
 import { useWeather } from "../../context/WeatherContext";
 import { useSignalKPath } from "../../hooks/useSignalK";
 import { useTexture, Stars } from "@react-three/drei";
@@ -13,7 +13,7 @@ import configService from "../../settings/ConfigService";
 extend({ Water, Sky });
 
 function Ocean3D() {
-  const { nightMode, setNightMode } = useOcearoContext();
+  const { nightMode, setNightMode } = useonwatchContext();
   const { getWindData, getCurrentWeather } = useWeather();
   
   const ref = useRef();
