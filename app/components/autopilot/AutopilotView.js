@@ -1,11 +1,11 @@
 'use client';
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useOcearoContext, toDegrees } from '../context/OcearoContext';
+import { useonwatchContext, toDegrees } from '../context/onwatchContext';
 import { useSignalKPath, useSignalKPaths } from '../hooks/useSignalK';
 import signalKService from '../services/SignalKService';
 import configService from '../settings/ConfigService';
-import { makeOcearoCoreApiCall } from '../utils/OcearoCoreUtils';
+import { makeonwatchCoreApiCall } from '../utils/onwatchCoreUtils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faShip,
@@ -41,7 +41,7 @@ import { useTranslation } from 'react-i18next';
  * - Mode selection (compass, wind, GPS, route)
  * - Heading adjustment (+/- 1°, 10°)
  * - Tack and gybe maneuvers
- * - PlayStation controller configuration (via OcearoCore)
+ * - PlayStation controller configuration (via onwatchCore)
  */
 export default function AutopilotView() {
     const { t } = useTranslation();
@@ -67,7 +67,7 @@ export default function AutopilotView() {
 
     // State
     const [activeTab, setActiveTab] = useState('control');
-    const { nightMode } = useOcearoContext();
+    const { nightMode } = useonwatchContext();
 
     const primaryTextClass = 'text-hud-main';
     const secondaryTextClass = nightMode ? 'text-oNight' : 'text-hud-secondary';
@@ -137,11 +137,11 @@ export default function AutopilotView() {
     }, [selectedDevice, debugMode]);
 
     /**
-     * Fetch controller configuration from OcearoCore
+     * Fetch controller configuration from onwatchCore
      */
     const fetchControllerConfig = useCallback(async () => {
         try {
-            const config = await makeOcearoCoreApiCall('/api/controller/config');
+            const config = await makeonwatchCoreApiCall('/api/controller/config');
             setControllerConfig(config);
             setControllerConnected(config?.connected || false);
         } catch (err) {
@@ -256,11 +256,11 @@ export default function AutopilotView() {
     };
 
     /**
-     * Save controller configuration to OcearoCore
+     * Save controller configuration to onwatchCore
      */
     const handleSaveControllerConfig = async (newConfig) => {
         try {
-            await makeOcearoCoreApiCall('/api/controller/config', {
+            await makeonwatchCoreApiCall('/api/controller/config', {
                 method: 'PUT',
                 body: JSON.stringify(newConfig)
             });
