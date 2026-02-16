@@ -426,7 +426,7 @@
     "rawTelemetryData": "RAAKA TELEMETRIADATA",
     "generated": "LUOTU:",
     "diagnosticReady": "Diagnostiikka valmis",
-    "diagnosticReadyDesc": "OcearoCore AI on valmiina käsittelemään risteilytietoja ja tarjoamaan strategisia tehtävänäkemyksiä.",
+    "diagnosticReadyDesc": "OnWatchCore AI on valmiina käsittelemään risteilytietoja ja tarjoamaan strategisia tehtävänäkemyksiä.",
     "editEntry": "Muokkaa merkintää",
     "manualEntry": "Manuaalinen merkintä",
     "author": "Tekijä",
@@ -449,7 +449,7 @@
     "noteCol": "Muistiinpano",
     "speed": "Nopeus",
     "coord": "Koord.",
-    "ocearoCoreNotEnabled": "OcearoCore ei ole käytössä"
+    "onwatchCoreNotEnabled": "OnWatchCore ei ole käytössä"
   },
   "motor": {
     "engine": "Moottori",
