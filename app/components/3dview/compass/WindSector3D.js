@@ -3,11 +3,11 @@
  * 
  * A 3D component that displays wind indicators (true and apparent wind)
  * around a compass dial, showing direction and speed.
- * Designed for the Ocearo UI with touch-optimized interactions.
+ * Designed for the onwatch UI with touch-optimized interactions.
  */
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { convertSpeedUnit, oBlue, oGreen, oNight, useOcearoContext } from '../../context/OcearoContext';
+import { convertSpeedUnit, oBlue, oGreen, oNight, useonwatchContext } from '../../context/onwatchContext';
 import { useSignalKPaths } from '../../hooks/useSignalK';
 import { Vector3, DoubleSide } from 'three';
 import { Text } from '@react-three/drei';
@@ -44,7 +44,7 @@ const WindArrow = ({
     textPosition = [0, 0.8, 0],
     arrowSize = 1
 }) => {
-    const { nightMode } = useOcearoContext();
+    const { nightMode } = useonwatchContext();
     const finalColor = color || (nightMode ? oNight : "#ffffff");
     
     return (
