@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect, useRef, useCallb
 import Client from '@signalk/client';
 import configService from '../../settings/ConfigService';
 import signalKService from '../../services/SignalKService';
-import { useOcearoContext } from '../../context/OcearoContext';
+import { useonwatchContext } from '../../context/onwatchContext';
 import { useSignalKPath } from '../../hooks/useSignalK';
 
 const AISContext = createContext();
@@ -62,7 +62,7 @@ export const AISProvider = ({ children }) => {
     const lastUpdateRef = useRef({});
     const pendingVisibilityUpdateRef = useRef(null);
 
-    const { convertLatLonToXY } = useOcearoContext();
+    const { convertLatLonToXY } = useonwatchContext();
     const myPosition = useSignalKPath('navigation.position');
 
     const updateVesselSpatialPropertiesRef = useRef();
