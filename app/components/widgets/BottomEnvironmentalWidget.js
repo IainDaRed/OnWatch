@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useMemo, useCallback } from 'react';
-import { convertPressure, useOcearoContext } from '../context/OcearoContext';
+import { convertPressure, useonwatchContext } from '../context/onwatchContext';
 import { useSignalKPaths } from '../hooks/useSignalK';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCloud, faDroplet, faWind } from '@fortawesome/free-solid-svg-icons';
@@ -56,7 +56,7 @@ const EnvironmentalDisplay = ({ mode, value, icon, nightMode }) => {
 };
 
 const BottomEnvironmentalWidget = () => {
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   const [availableModes, setAvailableModes] = useState([]);
   const [displayMode, setDisplayMode] = useState(null);
 
