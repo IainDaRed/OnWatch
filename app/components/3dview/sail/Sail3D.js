@@ -10,7 +10,7 @@ import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 import * as Wind from './Wind';
 import SailShape from './SailShape';
-import { oBlue, useOcearoContext } from '../../context/OcearoContext';
+import { oBlue, useonwatchContext } from '../../context/onwatchContext';
 import { useSignalKPath } from '../../hooks/useSignalK';
 import { getReefHeightFactor } from './SailTrimUtils';
 
