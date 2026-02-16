@@ -45,7 +45,7 @@
     "tailwindcss": "^4.1.18"
   },
   "signalk": {
-    "appIcon": "./icons/ocearo.webp",
-    "displayName": "Ocean Robot UI"
+    "appIcon": "./icons/onwatch.webp",
+    "displayName": "On Watch - Red Seas"
   }
 }
