@@ -11,7 +11,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import BottomTemperatureWidget from './widgets/BottomTemperatureWidget';
 import BottomEnvironmentalWidget from './widgets/BottomEnvironmentalWidget';
-import { useOcearoContext } from './context/OcearoContext';
+import { useonwatchContext } from './context/onwatchContext';
 import { useTranslation } from 'react-i18next';
 import configService from './settings/ConfigService';
 
@@ -35,7 +35,7 @@ const NavButton = ({ icon, onClick, label, textColor, badgeColor }) => (
 
 const BottomNavigation = ({ setRightView, toggleSettings , toggleAppMenu }) => {
   const { t } = useTranslation();
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   const textColor = nightMode ? 'text-hud-main/90' : 'text-hud-main';
 
   const config = configService.getAll();
