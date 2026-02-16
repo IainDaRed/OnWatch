@@ -1,5 +1,5 @@
 import React, { useRef, useMemo, useEffect, useState } from 'react';
-import { toDegrees, toKnots, useOcearoContext } from '../context/OcearoContext';
+import { toDegrees, toKnots, useonwatchContext } from '../context/onwatchContext';
 import { useSignalKPath, useSignalKPaths } from '../hooks/useSignalK';
 import configService from '../settings/ConfigService';
 import { useGLTF } from '@react-three/drei';
