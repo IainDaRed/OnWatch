@@ -9,7 +9,7 @@
 
 import React, { createContext, useState, useEffect, useContext, useCallback, useRef, useMemo } from 'react';
 import signalKService from '../services/SignalKService';
-import { useOcearoContext } from './OcearoContext';
+import { useonwatchContext } from './onwatchContext';
 import { useSignalKPath, useSignalKPaths } from '../hooks/useSignalK';
 
 const WeatherContext = createContext();
