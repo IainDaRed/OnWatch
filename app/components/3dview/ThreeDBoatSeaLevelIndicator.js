@@ -1,4 +1,4 @@
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 import { convertDepthUnit, getDepthUnitLabel } from '../utils/UnitConversions';
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useSignalKPath } from '../hooks/useSignalK';
@@ -23,7 +23,7 @@ const TEXT_COLORS = {
 
 const ThreeDBoatSeaLevelIndicator = () => {
   const { t } = useTranslation();
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   const [barHeight, setBarHeight] = useState(240); // Default height (equivalent to h-60)
 
   // Use specialized hooks for better performance and targeted subscriptions
@@ -32,7 +32,7 @@ const ThreeDBoatSeaLevelIndicator = () => {
 
   // Derive depth with fallback logic
   const depth = useMemo(() => {
-    // Mirroring getDepthData fallback logic from OcearoContext
+    // Mirroring getDepthData fallback logic from onwatchContext
     return depthKeel ?? depthTransducer ?? null;
   }, [depthKeel, depthTransducer]);
 
