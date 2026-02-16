@@ -2,12 +2,12 @@
  * CompassDial Component
  * 
  * A 3D compass dial that displays heading information with color-coded markers.
- * Designed for the Ocearo UI with touch-optimized interactions.
+ * Designed for the onwatch UI with touch-optimized interactions.
  */
 import React, { useMemo } from 'react';
 import { Ring, Sphere, Text } from '@react-three/drei';
 import { DoubleSide, MathUtils } from 'three';
-import { oGreen, oRed, oNight, useOcearoContext } from '../../context/OcearoContext';
+import { oGreen, oRed, oNight, useonwatchContext } from '../../context/onwatchContext';
 import { useSignalKPaths } from '../../hooks/useSignalK';
 import configService from '../../settings/ConfigService';
 
@@ -105,7 +105,7 @@ StaticRing.displayName = 'StaticRing';
 
 const CompassDial = ({ outerRadius, innerRadius }) => {
   // Get context values and night mode setting
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
 
   // Constants for visual appearance - Tesla UI High Contrast HUD
   const outerDialOpacity = 0.15;
