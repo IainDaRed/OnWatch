@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { useOcearoContext, oNight, oBlue } from '../../context/OcearoContext';
+import { useonwatchContext, oNight, oBlue } from '../../context/onwatchContext';
 import { useSignalKPath } from '../../hooks/useSignalK';
 import BaseWidget from './BaseWidget';
 import { useTranslation } from 'react-i18next';
@@ -11,7 +11,7 @@ const TimeWidget = React.memo(() => {
   const { t } = useTranslation();
   const [currentTime, setCurrentTime] = useState(new Date());
   
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   
   const latitude = useSignalKPath('navigation.position.latitude', 0.7854); // ~45°N
   const longitude = useSignalKPath('navigation.position.longitude', 0.1396); // ~8°E
