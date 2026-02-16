@@ -1,4 +1,4 @@
-import { convertSpeedUnit, getSpeedUnitLabel, useOcearoContext } from '../context/OcearoContext';
+import { convertSpeedUnit, getSpeedUnitLabel, useonwatchContext } from '../context/onwatchContext';
 import { useState, useMemo, useCallback } from 'react';
 import { useSignalKPaths } from '../hooks/useSignalK';
 import { useTranslation } from 'react-i18next';
@@ -13,7 +13,7 @@ const SPEED_CONFIG = {
 
 const ThreeDBoatSpeedIndicator = () => {
     const { t } = useTranslation();
-    const { nightMode } = useOcearoContext();
+    const { nightMode } = useonwatchContext();
     const [speedType, setSpeedType] = useState('SOG');
 
     // Subscribe to all relevant speed paths
