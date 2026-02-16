@@ -1,4 +1,4 @@
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useSignalKPaths } from '../hooks/useSignalK';
 import { useTranslation } from 'react-i18next';
@@ -27,7 +27,7 @@ const TEXT_COLORS = {
 
 const ThreeDBoatTideLevelIndicator = () => {
   const { t } = useTranslation();
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   const [maxHeight, setMaxHeight] = useState(240); // Default height (equivalent to h-60)
   
   const tidePaths = useMemo(() => [
