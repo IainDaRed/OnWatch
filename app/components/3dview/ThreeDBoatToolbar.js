@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAnchor, faShip, faPersonFalling, faMoon, faWater, faParking, faSatellite, faCompass, faRulerCombined } from '@fortawesome/free-solid-svg-icons';
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 import { useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const ThreeDBoatToolbar = () => {
     const { t } = useTranslation();
-    const { nightMode, setNightMode, states, toggleState, toggleExclusiveMode } = useOcearoContext();
+    const { nightMode, setNightMode, states, toggleState, toggleExclusiveMode } = useonwatchContext();
     const prevAutopilotRef = useRef(states.autopilot);
 
     // Dynamic text color based on night mode
