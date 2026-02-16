@@ -1,4 +1,4 @@
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 import { BATTERY_CONFIG, estimateStateOfCharge, isBatteryCharging } from '../utils/BatteryUtils';
 import { useState, useMemo } from 'react';
 import { useSignalKPaths } from '../hooks/useSignalK';
@@ -98,7 +98,7 @@ const BatteryIndicator = ({ batteryLevel, batteryNumber, voltage }) => {
 };
 
 const ThreeDBoatTankIndicator = () => {
-    const { nightMode, getTankData } = useOcearoContext();
+    const { nightMode, getTankData } = useonwatchContext();
     const [displayMode, setDisplayMode] = useState(INDICATOR_TYPES.BATTERIES);
 
     // Subscribe to battery paths
