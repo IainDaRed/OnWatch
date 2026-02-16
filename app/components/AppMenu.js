@@ -21,7 +21,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import configService from './settings/ConfigService';
 import { VIEW_MODES } from '../page';
-import { isOcearoCoreEnabled } from './utils/OcearoCoreUtils';
+import { isonwatchCoreEnabled } from './utils/onwatchCoreUtils';
 import { useTranslation } from 'react-i18next';
 
 const AppMenu = ({
@@ -32,7 +32,7 @@ const AppMenu = ({
     setShowAppMenu,
 }) => {
     const { t } = useTranslation();
-    const jarvisEnabled = isOcearoCoreEnabled();
+    const jarvisEnabled = isonwatchCoreEnabled();
     const debugMode = configService.get('debugMode');
 
     const MenuButton = ({ icon, label, onClick }) => (
