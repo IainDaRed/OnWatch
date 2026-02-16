@@ -1,6 +1,6 @@
 'use client';
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 
 /**
  * useSignalKPath - A hook to subscribe to a specific SignalK data path.
@@ -11,7 +11,7 @@ import { useOcearoContext } from '../context/OcearoContext';
  * @returns {any} The value at the specified path
  */
 export const useSignalKPath = (path, defaultValue = null) => {
-  const { getSignalKValue, subscribe, unsubscribe } = useOcearoContext();
+  const { getSignalKValue, subscribe, unsubscribe } = useonwatchContext();
   const [value, setValue] = useState(() => getSignalKValue(path) ?? defaultValue);
   const defaultValueRef = useRef(defaultValue);
   const lastKnownRef = useRef(value);
@@ -52,7 +52,7 @@ export const useSignalKPath = (path, defaultValue = null) => {
  * @returns {Object} Map of paths to their values
  */
 export const useSignalKPaths = (paths) => {
-  const { getSignalKValue, subscribe, unsubscribe } = useOcearoContext();
+  const { getSignalKValue, subscribe, unsubscribe } = useonwatchContext();
 
   // Stabilize paths array by content — prevents infinite re-render loops
   // when callers pass a new array reference with the same paths each render
