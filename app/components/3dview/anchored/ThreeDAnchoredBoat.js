@@ -2,14 +2,14 @@ import React, { Suspense, useRef } from 'react';
 import { useThree } from '@react-three/fiber';
 import { OrbitControls, PerspectiveCamera, Html, Environment } from '@react-three/drei';
 import * as THREE from 'three';
-import { useOcearoContext } from '../../context/OcearoContext';
+import { useonwatchContext } from '../../context/onwatchContext';
 import SailBoat3D from '../SailBoat3D';
 import AnchoredCircle from './AnchoredCircle';
 
 const ThreeDAnchoredBoat = ({ onUpdateInfoPanel }) => {
     const sailBoatRef = useRef();
     const { size } = useThree(); // Get canvas dimensions
-    const { nightMode } = useOcearoContext();
+    const { nightMode } = useonwatchContext();
     const aspect = size.width / size.height; // Calculate aspect ratio
 
     return (
@@ -34,7 +34,7 @@ const ThreeDAnchoredBoat = ({ onUpdateInfoPanel }) => {
             />
 
             {/* Environment for reflections */}
-            <Environment files="./assets/ocearo_env.hdr" background={false} />
+            <Environment files="./assets/onwatch_env.hdr" background={false} />
 
             {/* Lighting setup - Optimized for Tesla-UI HUD aesthetic */}
             <ambientLight intensity={0.2} />
