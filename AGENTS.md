@@ -1,6 +1,6 @@
-# CLAUDE.md — Agent Playbook for ocearo-ui (Claude / Codex coding agents)
+# CLAUDE.md — Agent Playbook for onwatch-ui (Claude / Codex coding agents)
 
-> Purpose: provide precise, project-aware instructions and prompt templates for using coding agents (Anthropic Claude Code, OpenAI Codex / Codex Cloud, or similar) safely and effectively on the **ocearo-ui** codebase. This playbook is a practical, no-new-deps guide: agents must not introduce external libraries beyond those already used by the project (React, Three.js, Tailwind, etc.).
+> Purpose: provide precise, project-aware instructions and prompt templates for using coding agents (Anthropic Claude Code, OpenAI Codex / Codex Cloud, or similar) safely and effectively on the **onwatch-ui** codebase. This playbook is a practical, no-new-deps guide: agents must not introduce external libraries beyond those already used by the project (React, Three.js, Tailwind, etc.).
 
 ---
 
