@@ -1,7 +1,7 @@
 'use client';
 import React, { useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { toDegrees, MS_TO_KNOTS, convertSpeedUnit, getSpeedUnitLabel, useOcearoContext } from '../../context/OcearoContext';
+import { toDegrees, MS_TO_KNOTS, convertSpeedUnit, getSpeedUnitLabel, useonwatchContext } from '../../context/onwatchContext';
 import { useSignalKPath } from '../../hooks/useSignalK';
 import configService from '../../settings/ConfigService';
 import { faTachometerAlt, faCompass, faWater, faWind } from '@fortawesome/free-solid-svg-icons';
@@ -18,7 +18,7 @@ const SpeedWidget = React.memo(() => {
   const cogValue = useSignalKPath('navigation.courseOverGroundTrue');
   const windSpeedValue = useSignalKPath('environment.wind.speedApparent');
 
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   const speedData = useMemo(() => {
     const hasData = sogValue !== null || stwValue !== null || debugMode;
 
