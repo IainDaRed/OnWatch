@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons';
 
 const MediaPlayer = () => {
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   const [selectedService, setSelectedService] = useState(null);
   const [iframeError, setIframeError] = useState(false);
 
