@@ -1,7 +1,7 @@
-# 🔐 Local HTTPS Setup Guide for ocearo-ui (or any Local PWA)
+# 🔐 Local HTTPS Setup Guide for onwatch-ui (or any Local PWA)
 
 This guide helps you:
-1. Generate a local Root CA and certificate for your app domain (e.g., `ocearo.local`).
+1. Generate a local Root CA and certificate for your app domain (e.g., `onwatch.local`).
 2. Install the Root CA on Android for secure PWA testing.
 3. Enable HTTPS in a server like Signal K (or any HTTPS-capable backend).
 
@@ -14,7 +14,7 @@ Create a file named `generate-local-cert.sh`:
 ```bash
 #!/bin/bash
 
-DOMAIN="ocearo.local"
+DOMAIN="onwatch.local"
 CERTS_DIR="./certs"
 ROOT_KEY="$CERTS_DIR/rootCA.key"
 ROOT_CERT="$CERTS_DIR/rootCA.pem"
@@ -90,13 +90,13 @@ chmod +x generate-local-cert.sh
 
 ---
 
-## 🌐 Step 3: Enable HTTPS for ocearo-ui Backend (e.g., Signal K)
+## 🌐 Step 3: Enable HTTPS for onwatch-ui Backend (e.g., Signal K)
 
 If you're using **Signal K** or any other HTTPS backend:
 
 1. Move the certificate files:
    ```bash
-   cp certs/ocearo.local.pem ~/.signalk/ssl/key-cert.pem
+   cp certs/onwatch.local.pem ~/.signalk/ssl/key-cert.pem
    cp certs/rootCA.pem ~/.signalk/ssl/ca.pem
    ```
 
@@ -106,7 +106,7 @@ If you're using **Signal K** or any other HTTPS backend:
    - Restart the server.
 
 3. Make sure your browser can access:  
-   👉 `https://ocearo.local`
+   👉 `https://onwatch.local`
 
 ---
 
@@ -116,7 +116,7 @@ If you're using **Signal K** or any other HTTPS backend:
 
 - Add a line in your `/etc/hosts` or use `mDNS`:
    ```
-   127.0.0.1 ocearo.local
+   127.0.0.1 onwatch.local
    ```
 - On Android, Firefox is preferred for self-signed cert testing.
 - Always clear browser cache or reset PWA if HTTPS settings change.
