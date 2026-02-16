@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState, useMemo } from 'react';
 import * as THREE from 'three';
-import { useOcearoContext, oYellow } from '../../context/OcearoContext';
+import { useonwatchContext, oYellow } from '../../context/onwatchContext';
 import { useSignalKPath } from '../../hooks/useSignalK';
 
 // Helper function to convert lat/lon difference to approximate meters
@@ -22,7 +22,7 @@ const haversineDistance = (lat1, lon1, lat2, lon2) => {
 const AnchoredCircle = () => {
   const circleRef = useRef();
   const [anchorPosition, setAnchorPosition] = useState(null);
-  const { subscribe, unsubscribe } = useOcearoContext();
+  const { subscribe, unsubscribe } = useonwatchContext();
   
   // Use subscription for position
   const skPosition = useSignalKPath('navigation.position');
