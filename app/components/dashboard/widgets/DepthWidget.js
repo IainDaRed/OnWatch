@@ -1,7 +1,7 @@
 'use client';
 import React, { useMemo } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useOcearoContext } from '../../context/OcearoContext';
+import { useonwatchContext } from '../../context/onwatchContext';
 import { convertDepthUnit, getDepthUnitLabel } from '../../utils/UnitConversions';
 import { useSignalKPath } from '../../hooks/useSignalK';
 import configService from '../../settings/ConfigService';
@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function DepthWidget() {
   const { t } = useTranslation();
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   const debugMode = configService.get('debugMode');
   
   const depthKeel = useSignalKPath('environment.depth.belowKeel');
