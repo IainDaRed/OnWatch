@@ -3,13 +3,13 @@ import { useSignalKPaths } from '../hooks/useSignalK';
 import { useTranslation } from 'react-i18next';
 import { Html } from '@react-three/drei';
 import configService from '../settings/ConfigService';
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 import { KNOTS_TO_MPS } from '../utils/UnitConversions';
 
 const toRadians = (degrees) => (degrees * Math.PI) / 180;
 
 const DebugInfo = (sampleData = true) => {
-    const { updateSignalKData } = useOcearoContext();
+    const { updateSignalKData } = useonwatchContext();
     const [windOverride, setWindOverride] = useState(() => configService.get('debugWindOverride') || false);
     const [overrideSpeed, setOverrideSpeed] = useState(() => configService.get('debugWindSpeed') ?? 10);
     const [overrideDirection, setOverrideDirection] = useState(() => configService.get('debugWindDirection') ?? 0);
