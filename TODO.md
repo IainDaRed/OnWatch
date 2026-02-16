@@ -1,6 +1,6 @@
 
 
-Je travaille sur le projet ocearo-ui (interface 3D de voilier basée sur Three.js / react-three-fiber avec données SignalK).
+Je travaille sur le projet onwatch-ui (interface 3D de voilier basée sur Three.js / react-three-fiber avec données SignalK).
 
 Actuellement :
 - La grand-voile est déjà affichée en 3D.
@@ -121,6 +121,6 @@ Contraintes techniques importantes
 - Pas de re-création de mesh à chaque frame
 - Utiliser BufferGeometry et modifier position attribute
 - Compatible mobile
-- Code structuré, propre, prêt à intégrer dans ocearo-ui
+- Code structuré, propre, prêt à intégrer dans onwatch-ui
 
-Avant tout analyse ce qui est déjà fait dans ocearo-ui pour comprendre l'architecture existante.
+Avant tout analyse ce qui est déjà fait dans onwatch-ui pour comprendre l'architecture existante.
