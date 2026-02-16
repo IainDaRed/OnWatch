@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 import { useSignalKPaths } from '../hooks/useSignalK';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -10,25 +10,25 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import configService from '../settings/ConfigService';
 import { 
-  isOcearoCoreEnabled, 
-  generateOcearoCoreLogbookEntry, 
-  analyzeLogbookWithOcearoCore,
+  isonwatchCoreEnabled, 
+  generateonwatchCoreLogbookEntry, 
+  analyzeLogbookWithonwatchCore,
   collectCurrentVesselData,
-  handleOcearoCoreError,
+  handleonwatchCoreError,
   fetchLogbookEntries,
   addLogbookEntry,
   requestAnalysis
-} from '../utils/OcearoCoreUtils';
+} from '../utils/onwatchCoreUtils';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
 /**
  * LogbookView component with three tabs: Timeline, Logbook, and Analysis
- * Integrates with SignalK logbook API and includes OcearoCore functionality
+ * Integrates with SignalK logbook API and includes onwatchCore functionality
  */
 const LogbookView = () => {
   const { t } = useTranslation();
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   const [activeTab, setActiveTab] = useState('logbook');
   
   // Define paths for capturing vessel state during entry creation
@@ -61,19 +61,19 @@ const LogbookView = () => {
   const [analysisResult, setAnalysisResult] = useState(null);
   const [analysisType, setAnalysisType] = useState(null);
 
-  // Check if OcearoCore is enabled from config
+  // Check if onwatchCore is enabled from config
   const config = configService.getAll();
-  const ocearoCoreEnabled = isOcearoCoreEnabled();
+  const onwatchCoreEnabled = isonwatchCoreEnabled();
 
   /**
-   * Fetch logbook entries through OcearoCore proxy
+   * Fetch logbook entries through onwatchCore proxy
    */
   const fetchLogbookEntriesData = useCallback(async () => {
     setLoading(true);
     setError(null);
     
     try {
-      // Use OcearoCore proxy to fetch logbook entries
+      // Use onwatchCore proxy to fetch logbook entries
       const rawEntries = await fetchLogbookEntries();
       
       // Transform entries to ensure correct data types (Date objects, etc.)
@@ -96,7 +96,7 @@ const LogbookView = () => {
       if (err.name !== 'NetworkError' && err.name !== 'TimeoutError') {
         console.error('Error fetching logbook entries:', err);
       }
-      const errorMessage = handleOcearoCoreError(err, 'Logbook fetch');
+      const errorMessage = handleonwatchCoreError(err, 'Logbook fetch');
       setError(errorMessage);
       
       // Fallback to sample data only in debug mode
@@ -167,7 +167,7 @@ const LogbookView = () => {
   }, []);
 
   /**
-   * Add a new logbook entry through OcearoCore proxy
+   * Add a new logbook entry through onwatchCore proxy
    */
   const addEntry = useCallback(async () => {
     try {
@@ -196,7 +196,7 @@ const LogbookView = () => {
         text: entryForm.text || 'Manual entry'
       };
 
-      // Use OcearoCore proxy to add the entry
+      // Use onwatchCore proxy to add the entry
       await addLogbookEntry(newEntry);
       
       // Close modal and refresh entries
@@ -204,24 +204,24 @@ const LogbookView = () => {
       fetchLogbookEntriesData();
     } catch (err) {
       console.error('Error adding entry:', err);
-      const errorMessage = handleOcearoCoreError(err, 'Add logbook entry');
+      const errorMessage = handleonwatchCoreError(err, 'Add logbook entry');
       setError(errorMessage);
     }
   }, [skValues, fetchLogbookEntriesData, entryForm]);
 
   /**
-   * Add entry using OcearoCore AI
+   * Add entry using onwatchCore AI
    */
-  const addOcearoCoreEntry = useCallback(async () => {
-    if (!ocearoCoreEnabled) {
-      setError(t('logbook.ocearoCoreNotEnabled'));
+  const addonwatchCoreEntry = useCallback(async () => {
+    if (!onwatchCoreEnabled) {
+      setError(t('logbook.onwatchCoreNotEnabled'));
       return;
     }
 
     try {
       setLoading(true);
       
-      // Collect current boat data for OcearoCore analysis using current values
+      // Collect current boat data for onwatchCore analysis using current values
       const currentData = {
         position: skValues['navigation.position'],
         course: skValues['navigation.courseOverGroundTrue'] || skValues['navigation.headingTrue'],
@@ -240,26 +240,26 @@ const LogbookView = () => {
         log: skValues['navigation.log']
       };
 
-      // Call OcearoCore API to generate intelligent logbook entry
-      await generateOcearoCoreLogbookEntry(currentData);
+      // Call onwatchCore API to generate intelligent logbook entry
+      await generateonwatchCoreLogbookEntry(currentData);
       
       // Refresh entries after successful generation
       fetchLogbookEntriesData();
       
     } catch (err) {
-      const errorMessage = handleOcearoCoreError(err, 'OcearoCore entry generation');
+      const errorMessage = handleonwatchCoreError(err, 'onwatchCore entry generation');
       setError(errorMessage);
     } finally {
       setLoading(false);
     }
-  }, [ocearoCoreEnabled, skValues, fetchLogbookEntriesData]);
+  }, [onwatchCoreEnabled, skValues, fetchLogbookEntriesData]);
 
   /**
-   * Get OcearoCore analysis of logbook data
+   * Get onwatchCore analysis of logbook data
    */
-  const getOcearoCoreAnalysis = useCallback(async (type) => {
-    if (!ocearoCoreEnabled) {
-      setError(t('logbook.ocearoCoreNotEnabled'));
+  const getonwatchCoreAnalysis = useCallback(async (type) => {
+    if (!onwatchCoreEnabled) {
+      setError(t('logbook.onwatchCoreNotEnabled'));
       return;
     }
 
@@ -270,27 +270,27 @@ const LogbookView = () => {
       setError(null);
       setActiveTab('analysis');
       
-      // Call OcearoCore /analyze endpoint with the selected type
+      // Call onwatchCore /analyze endpoint with the selected type
       const analysis = await requestAnalysis(type);
       
       // Store analysis results
       setAnalysisResult(analysis);
-      console.log('OcearoCore Analysis:', analysis);
+      console.log('onwatchCore Analysis:', analysis);
       
     } catch (err) {
-      const errorMessage = handleOcearoCoreError(err, 'OcearoCore analysis');
+      const errorMessage = handleonwatchCoreError(err, 'onwatchCore analysis');
       setError(errorMessage);
     } finally {
       setAnalysisLoading(false);
     }
-  }, [ocearoCoreEnabled]);
+  }, [onwatchCoreEnabled]);
 
   /**
    * Get logbook-specific analysis
    */
   const getLogbookAnalysis = useCallback(async () => {
-    if (!ocearoCoreEnabled) {
-      setError(t('logbook.ocearoCoreNotEnabled'));
+    if (!onwatchCoreEnabled) {
+      setError(t('logbook.onwatchCoreNotEnabled'));
       return;
     }
 
@@ -301,20 +301,20 @@ const LogbookView = () => {
       setError(null);
       setActiveTab('analysis');
       
-      // Call OcearoCore /logbook/analyze endpoint
-      const analysis = await analyzeLogbookWithOcearoCore();
+      // Call onwatchCore /logbook/analyze endpoint
+      const analysis = await analyzeLogbookWithonwatchCore();
       
       // Store analysis results
       setAnalysisResult(analysis);
       console.log('Logbook Analysis:', analysis);
       
     } catch (err) {
-      const errorMessage = handleOcearoCoreError(err, 'Logbook analysis');
+      const errorMessage = handleonwatchCoreError(err, 'Logbook analysis');
       setError(errorMessage);
     } finally {
       setAnalysisLoading(false);
     }
-  }, [ocearoCoreEnabled]);
+  }, [onwatchCoreEnabled]);
 
   /**
    * Edit an existing entry
@@ -381,10 +381,10 @@ const LogbookView = () => {
           {t('logbook.logbookEntries')}
         </h3>
         <div className="flex space-x-3">
-          {ocearoCoreEnabled && (
+          {onwatchCoreEnabled && (
             <button 
               className="bg-oGreen/10 text-oGreen hover:bg-oGreen/20 px-3 py-1.5 rounded text-xs font-black uppercase transition-all duration-300 flex items-center shadow-soft border border-oGreen/20"
-              onClick={addOcearoCoreEntry}
+              onClick={addonwatchCoreEntry}
               disabled={loading}
             >
               <FontAwesomeIcon icon={faRobot} className="mr-2" />
@@ -471,10 +471,10 @@ const LogbookView = () => {
             {t('logbook.cruiseTimeline')}
           </h3>
           <div className="flex space-x-3">
-            {ocearoCoreEnabled && (
+            {onwatchCoreEnabled && (
               <button 
                 className="bg-oGreen/10 text-oGreen hover:bg-oGreen/20 px-3 py-1.5 rounded text-xs font-black uppercase transition-all duration-300 flex items-center shadow-soft border border-oGreen/20"
-                onClick={addOcearoCoreEntry}
+                onClick={addonwatchCoreEntry}
                 disabled={loading}
               >
                 <FontAwesomeIcon icon={faRobot} className="mr-2" />
@@ -572,16 +572,16 @@ const LogbookView = () => {
         <p className="text-hud-secondary text-xs font-black uppercase tracking-tighter">{t('logbook.aiPoweredAnalysis')}</p>
       </div>
 
-      {ocearoCoreEnabled && (
+      {onwatchCoreEnabled && (
         <div className="tesla-card p-4 mb-6 bg-hud-bg">
           <h4 className="text-xs font-black text-hud-secondary mb-4 uppercase tracking-widest">{t('logbook.selectOperation')}</h4>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
             {[
               { id: 'logbook', label: 'LOGBOOK', icon: faBook, color: 'bg-purple-600', action: getLogbookAnalysis },
-              { id: 'weather', label: 'WEATHER', icon: faCloudSun, color: 'bg-blue-600', action: () => getOcearoCoreAnalysis('weather') },
-              { id: 'sail', label: 'SAIL', icon: faCompass, color: 'bg-oGreen', action: () => getOcearoCoreAnalysis('sail') },
-              { id: 'alerts', label: 'ALERTS', icon: faRobot, color: 'bg-oRed', action: () => getOcearoCoreAnalysis('alerts') },
-              { id: 'status', label: 'STATUS', icon: faTachometerAlt, color: 'bg-oYellow', action: () => getOcearoCoreAnalysis('status') }
+              { id: 'weather', label: 'WEATHER', icon: faCloudSun, color: 'bg-blue-600', action: () => getonwatchCoreAnalysis('weather') },
+              { id: 'sail', label: 'SAIL', icon: faCompass, color: 'bg-oGreen', action: () => getonwatchCoreAnalysis('sail') },
+              { id: 'alerts', label: 'ALERTS', icon: faRobot, color: 'bg-oRed', action: () => getonwatchCoreAnalysis('alerts') },
+              { id: 'status', label: 'STATUS', icon: faTachometerAlt, color: 'bg-oYellow', action: () => getonwatchCoreAnalysis('status') }
             ].map((opt) => (
               <button
                 key={opt.id}
@@ -698,7 +698,7 @@ const LogbookView = () => {
             {/* Timestamp */}
             {analysisResult.timestamp && (
               <div className="text-hud-dim text-xs font-black text-right uppercase tracking-tighter">
-                {t('logbook.generated')} {new Date(analysisResult.timestamp).toLocaleString()} // OCEAROCORE V2.4
+                {t('logbook.generated')} {new Date(analysisResult.timestamp).toLocaleString()} // onwatchCORE V2.4
               </div>
             )}
           </div>
