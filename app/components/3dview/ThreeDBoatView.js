@@ -6,7 +6,7 @@ import Ocean3D from './ocean/Ocean3D';
 import AISView from './ais/AISView';
 import ThreeDCompassView from './ThreeDCompassView';
 import LayLines3D from './compass/LayLines3D';
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 import { AISProvider } from './ais/AISContext';
 import PolarProjection from './polar/Polar3D';
 import BoatLighting from './BoatLighting';
@@ -16,7 +16,7 @@ import { updateSailTrim } from './sail/SailTrimUtils';
 import SailTrimSliders from './sail/SailTrimSliders';
 
 const ThreeDBoatView = ({ onUpdateInfoPanel }) => {
-    const { states } = useOcearoContext(); // Application state from context
+    const { states } = useonwatchContext(); // Application state from context
     const isCompassLayerVisible = false; // Compass visibility
     const sailBoatRef = useRef();
     const showAxes = configService.get('debugShowAxes');
@@ -59,7 +59,7 @@ const ThreeDBoatView = ({ onUpdateInfoPanel }) => {
 
             {/* Environment for reflections */}
             <Environment
-                files="./assets/ocearo_env.hdr"
+                files="./assets/onwatch_env.hdr"
                 background={false}
                 intensity={0.8}
                 resolution={256}
