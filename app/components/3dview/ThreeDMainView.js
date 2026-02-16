@@ -1,6 +1,6 @@
 import { Canvas, useThree } from '@react-three/fiber';
 import dynamic from 'next/dynamic';
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 import * as THREE from 'three';
 import { useEffect, useState } from 'react';
 
@@ -29,19 +29,19 @@ const RendererExposer = () => {
   useEffect(() => {
     // Expose the renderer to the window for performance monitoring
     if (window && gl) {
-      window.__OCEARO_RENDERER = gl;
+      window.__onwatch_RENDERER = gl;
       
       // Setup info tracking interval
       const trackInfoInterval = setInterval(() => {
         if (gl && gl.info) {
-          window.__OCEARO_RENDER_INFO = gl.info;
+          window.__onwatch_RENDER_INFO = gl.info;
         }
       }, 1000);
       
       return () => {
         // Cleanup
-        delete window.__OCEARO_RENDERER;
-        delete window.__OCEARO_RENDER_INFO;
+        delete window.__onwatch_RENDERER;
+        delete window.__onwatch_RENDER_INFO;
         clearInterval(trackInfoInterval);
       };
     }
@@ -51,7 +51,7 @@ const RendererExposer = () => {
 };
 
 const ThreeDMainView = () => {
-    const { states, nightMode } = useOcearoContext(); // Access global context
+    const { states, nightMode } = useonwatchContext(); // Access global context
     const [infoPanelContent, setInfoPanelContent] = useState(null);
     const [showAttitudeIndicator, setShowAttitudeIndicator] = useState(true);
     
