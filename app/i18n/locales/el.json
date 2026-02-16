@@ -426,7 +426,7 @@
     "rawTelemetryData": "ΑΚΑΤΕΡΓΑΣΤΑ ΔΕΔΟΜΕΝΑ ΤΗΛΕΜΕΤΡΙΑΣ",
     "generated": "ΔΗΜΙΟΥΡΓΗΘΗΚΕ:",
     "diagnosticReady": "Διαγνωστικά έτοιμα",
-    "diagnosticReadyDesc": "Το AI OcearoCore είναι έτοιμο να επεξεργαστεί δεδομένα πλου και να παρέχει στρατηγικές πληροφορίες.",
+    "diagnosticReadyDesc": "Το AI OnWatchCore είναι έτοιμο να επεξεργαστεί δεδομένα πλου και να παρέχει στρατηγικές πληροφορίες.",
     "editEntry": "Επεξεργασία καταχώρησης",
     "manualEntry": "Χειροκίνητη καταχώρηση",
     "author": "Συγγραφέας",
@@ -449,7 +449,7 @@
     "noteCol": "Σημείωση",
     "speed": "Ταχύτητα",
     "coord": "Συντ.",
-    "ocearoCoreNotEnabled": "Το OcearoCore δεν είναι ενεργοποιημένο"
+    "onwatchCoreNotEnabled": "Το OnWatchCore δεν είναι ενεργοποιημένο"
   },
   "motor": {
     "engine": "Κινητήρας",
