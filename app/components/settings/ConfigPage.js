@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import configService from './ConfigService';
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 import { SUPPORTED_LANGUAGES } from '../../i18n/i18n';
 
 const SettingsBadge = ({ color }) => (
@@ -11,7 +11,7 @@ const SettingsBadge = ({ color }) => (
 
 const ConfigPage = ({ onSave }) => {
     const { t, i18n } = useTranslation();
-    const { theme, setTheme } = useOcearoContext();
+    const { theme, setTheme } = useonwatchContext();
     const initialConfig = configService.getAll();
     const computedSignalKUrl = configService.getComputedSignalKUrl();
     const boats = configService.getBoatsData(); // Get full list of boats
