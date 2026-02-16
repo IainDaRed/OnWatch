@@ -1,5 +1,5 @@
 /**
- * Utility functions for motor/engine related data handling in the Ocearo UI
+ * Utility functions for motor/engine related data handling in the onwatch UI
  */
 
 /**
