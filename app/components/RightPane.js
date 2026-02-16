@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useOcearoContext } from './context/OcearoContext';
+import { useonwatchContext } from './context/onwatchContext';
 import { useTranslation } from 'react-i18next';
 import { useSignalKPath } from './hooks/useSignalK';
 import configService from './settings/ConfigService';
@@ -76,7 +76,7 @@ const EXTERNAL_URLS = {
 
 const RightPane = ({ view }) => {
     const { t } = useTranslation();
-    const { nightMode } = useOcearoContext();
+    const { nightMode } = useonwatchContext();
     const [myPosition, setMyPosition] = useState(DEFAULT_POSITION);
     const [error, setError] = useState(null);
     const config = configService.getAll();
