@@ -2,7 +2,7 @@
 const nextConfig = { 
   reactStrictMode: process.env.NODE_ENV !== 'development', 
   output: 'export', 
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/ocearo-ui' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/onwatch-ui' : '',
   images: {
     unoptimized: true // Disable image optimization for compatibility with export mode
   },
