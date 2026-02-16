@@ -4,7 +4,7 @@
 LOCAL_BUILD_DIR="./out"  # Path to the Next.js build directory
 REMOTE_USER="pi"           # Username for the Raspberry Pi
 REMOTE_HOST="cirrus.local" # IP or hostname of the Raspberry Pi
-REMOTE_PLUGIN_DIR="/home/pi/.signalk/node_modules/ocearo-ui" # Path to the plugin folder on the Pi
+REMOTE_PLUGIN_DIR="/home/pi/.signalk/node_modules/onwatch-ui" # Path to the plugin folder on the Pi
 SSH_PORT=22                # SSH port, default is 22
 
 # Build the Next.js project
