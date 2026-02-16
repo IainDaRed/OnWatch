@@ -40,7 +40,7 @@ class ConfigService {
       showRigging: true
     };
 
-    this.configKey = 'ocearoConfig'; // Key used to store the config
+    this.configKey = 'onwatchConfig'; // Key used to store the config
     this.inMemoryConfig = { ...this.defaultConfig }; // Fallback storage for SSR
     this.config = this.loadConfig(); // Load existing config or initialize with defaults
   }
