@@ -1,5 +1,5 @@
 /**
- * UnitConversions.js - Centralized unit conversion utilities for Ocearo UI
+ * UnitConversions.js - Centralized unit conversion utilities for onwatch UI
  *
  * All SignalK values are in SI units. This module provides conversion functions
  * to display-friendly units used in maritime navigation.
