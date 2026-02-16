@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect, useContext, useRef, useCallb
 import Client from '@signalk/client';
 import configService from '../settings/ConfigService';
 import signalKService from '../services/SignalKService';
-import { updateOcearoCoreMode, isOcearoCoreEnabled, handleOcearoCoreError } from '../utils/OcearoCoreUtils';
+import { updateonwatchCoreMode, isonwatchCoreEnabled, handleonwatchCoreError } from '../utils/onwatchCoreUtils';
 import { MathUtils } from 'three';
 
 export {
@@ -18,7 +18,7 @@ export {
 import { MS_TO_KNOTS } from '../utils/UnitConversions';
 import { SAMPLE_DATA, SAMPLE_DATA_INTERVAL } from './SampleData';
 
-const OcearoContext = createContext();
+const onwatchContext = createContext();
 
 
 export const oBlue = '#09bfff';
@@ -42,7 +42,7 @@ const INITIAL_STATES = {
 
 
 
-export const OcearoContextProvider = ({ children }) => {
+export const onwatchContextProvider = ({ children }) => {
     const [theme, setTheme] = useState(() => configService.get('theme') || 'dark');
     const [nightMode, setNightMode] = useState(false); // Night mode state (separate from theme, for red HUD)
     const [states, setStates] = useState(INITIAL_STATES);
@@ -239,9 +239,9 @@ export const OcearoContextProvider = ({ children }) => {
         if (key === 'anchorWatch') {
             try {
                 if (newValue) {
-                    // Set anchored mode in OcearoCore
-                    if (isOcearoCoreEnabled()) {
-                        await updateOcearoCoreMode('anchored');
+                    // Set anchored mode in onwatchCore
+                    if (isonwatchCoreEnabled()) {
+                        await updateonwatchCoreMode('anchored');
                     }
                 } else {
                     // Determine navigation mode based on engine state
@@ -249,15 +249,15 @@ export const OcearoContextProvider = ({ children }) => {
                     const engineState = data['propulsion.main.state'] || data['propulsion.main.revolutions'];
                     const navigationMode = (engineState === 'running' || (typeof engineState === 'number' && engineState > 0)) ? 'motoring' : 'sailing';
                     
-                    if (isOcearoCoreEnabled()) {
-                        await updateOcearoCoreMode(navigationMode);
+                    if (isonwatchCoreEnabled()) {
+                        await updateonwatchCoreMode(navigationMode);
                     }
                 }
             } catch (error) {
                 if (error.name === 'NetworkError') {
-                    console.warn('OcearoCore unreachable for anchorWatch update');
+                    console.warn('onwatchCore unreachable for anchorWatch update');
                 } else {
-                    console.error('Failed to update OcearoCore mode for anchorWatch:', handleOcearoCoreError(error));
+                    console.error('Failed to update onwatchCore mode for anchorWatch:', handleonwatchCoreError(error));
                 }
             }
         }
@@ -266,16 +266,16 @@ export const OcearoContextProvider = ({ children }) => {
         if (key === 'parkingMode') {
             try {
                 if (newValue) {
-                    // When activating parkingMode, set docking mode in OcearoCore
-                    if (isOcearoCoreEnabled()) {
-                        await updateOcearoCoreMode('moored');
+                    // When activating parkingMode, set docking mode in onwatchCore
+                    if (isonwatchCoreEnabled()) {
+                        await updateonwatchCoreMode('moored');
                     }
                 }
             } catch (error) {
                 if (error.name === 'NetworkError') {
-                    console.warn('OcearoCore unreachable for parkingMode update');
+                    console.warn('onwatchCore unreachable for parkingMode update');
                 } else {
-                    console.error('Failed to update OcearoCore mode for parkingMode:', handleOcearoCoreError(error));
+                    console.error('Failed to update onwatchCore mode for parkingMode:', handleonwatchCoreError(error));
                 }
             }
         }
@@ -284,21 +284,21 @@ export const OcearoContextProvider = ({ children }) => {
         if (key === 'racing') {
             try {
                 if (newValue) {
-                    // When activating racing mode, set racing mode in OcearoCore
-                    if (isOcearoCoreEnabled()) {
-                        await updateOcearoCoreMode('racing');
+                    // When activating racing mode, set racing mode in onwatchCore
+                    if (isonwatchCoreEnabled()) {
+                        await updateonwatchCoreMode('racing');
                     }
                 } else {
                     // When deactivating racing mode, return to navigation mode
-                    if (isOcearoCoreEnabled()) {
-                        await updateOcearoCoreMode('sailing');
+                    if (isonwatchCoreEnabled()) {
+                        await updateonwatchCoreMode('sailing');
                     }
                 }
             } catch (error) {
                 if (error.name === 'NetworkError') {
-                    console.warn('OcearoCore unreachable for racing update');
+                    console.warn('onwatchCore unreachable for racing update');
                 } else {
-                    console.error('Failed to update OcearoCore mode for racing:', handleOcearoCoreError(error));
+                    console.error('Failed to update onwatchCore mode for racing:', handleonwatchCoreError(error));
                 }
             }
         }
@@ -326,23 +326,23 @@ export const OcearoContextProvider = ({ children }) => {
                 return newState;
             });
 
-            // Handle OcearoCore mode updates for the new state
+            // Handle onwatchCore mode updates for the new state
             try {
-                if (isOcearoCoreEnabled()) {
-                    if (key === 'anchorWatch') await updateOcearoCoreMode('anchored');
-                    else if (key === 'parkingMode') await updateOcearoCoreMode('moored');
+                if (isonwatchCoreEnabled()) {
+                    if (key === 'anchorWatch') await updateonwatchCoreMode('anchored');
+                    else if (key === 'parkingMode') await updateonwatchCoreMode('moored');
                     else if (key === 'autopilot') {
                          const data = signalkDataRef.current;
                          const engineState = data['propulsion.main.state'] || data['propulsion.main.revolutions'];
                          const navigationMode = (engineState === 'running' || (typeof engineState === 'number' && engineState > 0)) ? 'motoring' : 'sailing';
-                         await updateOcearoCoreMode(navigationMode);
+                         await updateonwatchCoreMode(navigationMode);
                     }
                 }
             } catch (error) {
                 if (error.name === 'NetworkError') {
-                    console.warn(`OcearoCore unreachable for exclusive mode update: ${key}`);
+                    console.warn(`onwatchCore unreachable for exclusive mode update: ${key}`);
                 } else {
-                    console.error(`Failed to update OcearoCore mode for ${key}:`, handleOcearoCoreError(error));
+                    console.error(`Failed to update onwatchCore mode for ${key}:`, handleonwatchCoreError(error));
                 }
             }
         } else {
@@ -500,7 +500,7 @@ export const OcearoContextProvider = ({ children }) => {
         // General method to retrieve SignalK values
 
         return (
-            <OcearoContext.Provider
+            <onwatchContext.Provider
                 value={{
                     getSignalKValue,
                     subscribe,
@@ -518,11 +518,11 @@ export const OcearoContextProvider = ({ children }) => {
                 }}
             >
                 {children}
-            </OcearoContext.Provider>
+            </onwatchContext.Provider>
         );
     };
 
-// Hook to access the Ocearo context throughout the application
-export const useOcearoContext = () => useContext(OcearoContext);
+// Hook to access the onwatch context throughout the application
+export const useonwatchContext = () => useContext(onwatchContext);
 
 export { calculateTideHeightUsingTwelfths } from './TideContext';
