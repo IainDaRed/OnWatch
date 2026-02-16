@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useMemo } from "react";
 import { useFrame, extend } from "@react-three/fiber";
 import { shaderMaterial } from "@react-three/drei";
 import * as THREE from "three";
-import { useOcearoContext, oBlue, oGreen } from "../../context/OcearoContext";
+import { useonwatchContext, oBlue, oGreen } from "../../context/onwatchContext";
 import { useSignalKPath } from "../../hooks/useSignalK";
 // Create a custom shader material with an extra 'rainbowActive' uniform.
 const TrailShaderMaterial = shaderMaterial(
@@ -135,7 +135,7 @@ export const Trail = ({
   opacity = 0.4,
 }) => {
   const trailRef = useRef();
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   
   // Use subscription for autopilot state
   const autopilotState = useSignalKPath("steering.autopilot.state");
