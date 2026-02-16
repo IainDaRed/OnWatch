@@ -1,5 +1,5 @@
 {
-  "name": "ocearo-ui",
+  "name": "onwatch-ui",
   "version": "2.0.0",
   "private": true,
   "description": "Ocean Robot UI: 3D visualization dashboard for signalk",
@@ -8,7 +8,7 @@
     "signalk-webapp"
   ],
   "signalk": {
-    "appIcon": "./icons/ocearo.webp",
+    "appIcon": "./icons/onwatch.webp",
     "displayName": "Ocean Robot UI"
   }
 }
