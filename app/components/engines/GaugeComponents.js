@@ -1,6 +1,6 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 
 const CSS_COLORS = {
   oRed: 'var(--color-oRed)',
