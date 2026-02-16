@@ -1,8 +1,8 @@
 /**
- * SampleData.js - Debug/demo data for Ocearo UI
+ * SampleData.js - Debug/demo data for onwatch UI
  *
  * Contains realistic sample SignalK values used when debugMode is enabled
- * or when the SignalK server is unreachable. Extracted from OcearoContext
+ * or when the SignalK server is unreachable. Extracted from onwatchContext
  * to keep the context provider focused on state management.
  */
 
