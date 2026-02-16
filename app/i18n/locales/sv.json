@@ -426,7 +426,7 @@
     "rawTelemetryData": "RÅ TELEMETRIDATA",
     "generated": "GENERERAD:",
     "diagnosticReady": "Diagnostik redo",
-    "diagnosticReadyDesc": "OcearoCore AI står redo att bearbeta kryssningsdata och ge strategiska uppdragsinsikter.",
+    "diagnosticReadyDesc": "OnWatchCore AI står redo att bearbeta kryssningsdata och ge strategiska uppdragsinsikter.",
     "editEntry": "Redigera post",
     "manualEntry": "Manuell post",
     "author": "Författare",
@@ -449,7 +449,7 @@
     "noteCol": "Anteckning",
     "speed": "Fart",
     "coord": "Koord.",
-    "ocearoCoreNotEnabled": "OcearoCore är inte aktiverat"
+    "onwatchCoreNotEnabled": "OnWatchCore är inte aktiverat"
   },
   "motor": {
     "engine": "Motor",
