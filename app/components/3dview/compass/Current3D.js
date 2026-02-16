@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Vector3 } from 'three';
 import { Text } from '@react-three/drei';
 import * as THREE from 'three';
-import { oBlue, oGreen, useOcearoContext } from '../../context/OcearoContext';
+import { oBlue, oGreen, useonwatchContext } from '../../context/onwatchContext';
 import { useSignalKPath } from '../../hooks/useSignalK';
 
 // Constants for configuration
@@ -19,7 +19,7 @@ const CurrentArrow = ({
   textPosition = [0, 0.8, 0],
   arrowSize = 1,
 }) => {
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   const finalColor = color || (nightMode ? oNight : "#ffffff");
   
   return (
