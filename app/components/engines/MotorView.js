@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 import { useSignalKPath, useSignalKPaths } from '../hooks/useSignalK';
 import configService from '../settings/ConfigService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -24,8 +24,8 @@ import {
   fetchFuelLogEntries, 
   calculateFuelStats, 
   estimateTankLevel,
-  handleOcearoCoreError 
-} from '../utils/OcearoCoreUtils';
+  handleonwatchCoreError 
+} from '../utils/onwatchCoreUtils';
 
 // Helper component for displaying individual data points
 const DataField = ({ label, value, unit, icon, statusClass = 'text-hud-main' }) => {
@@ -203,7 +203,7 @@ const MotorView = () => {
       const stats = calculateFuelStats(entries, engineData.fuelCapacity);
       setFuelStats(stats);
     } catch (error) {
-      const errorMessage = handleOcearoCoreError(error, 'Fuel log fetch');
+      const errorMessage = handleonwatchCoreError(error, 'Fuel log fetch');
       setFuelLogError(errorMessage);
       setFuelLogEntries([]);
       setFuelStats(null);
@@ -227,7 +227,7 @@ const MotorView = () => {
       setShowFuelLogModal(false);
       await loadFuelLogEntries();
     } catch (error) {
-      const errorMessage = handleOcearoCoreError(error, 'Fuel log save');
+      const errorMessage = handleonwatchCoreError(error, 'Fuel log save');
       setFuelLogError(errorMessage);
     } finally {
       setFuelLogLoading(false);
