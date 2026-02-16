@@ -3,7 +3,7 @@
 import React, { useState, useCallback, useMemo, useEffect, useRef, Suspense } from 'react';
 import dynamic from 'next/dynamic';
 import { useDrag } from '@use-gesture/react';
-import { OcearoContextProvider } from './components/context/OcearoContext';
+import { OnWatchContextProvider } from './components/context/OnWatchContext';
 import { WeatherContextProvider } from './components/context/WeatherContext';
 import { TideContextProvider } from './components/context/TideContext';
 import ErrorBoundary from './ErrorBoundary';
