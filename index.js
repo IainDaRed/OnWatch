@@ -1,19 +1,19 @@
 module.exports = function(app) {
   return {
-    id: 'signalk-plugin-ocearo-ui',
-    name: 'Ocearo UI: Ocean Robot Interface',
-    description: 'Sailing made smarter with the Ocean Robot UI',
+    id: 'signalk-plugin-onwatch-ui',
+    name: 'OnWatch UI: Red Seas Interface',
+    description: 'Sailing made smarter with OnWatch from Red Seas',
 
     start: function(options) {
-      app.debug('Starting Ocearo UI Plugin...');
+      app.debug('Starting OnWatch UI Plugin...');
     },
 
     stop: function() {
-      app.debug('Stopping Ocearo UI Plugin...');
+      app.debug('Stopping OnWatch UI Plugin...');
     },
 
     schema: {
-      title: "Ocearo UI Configuration",
+      title: "OnWatch UI Configuration",
       type: "object",
       properties: {
         enableFeature: {
