@@ -426,7 +426,7 @@
     "rawTelemetryData": "RUWE TELEMETRIEGEGEVENS",
     "generated": "GEGENEREERD:",
     "diagnosticReady": "Diagnose gereed",
-    "diagnosticReadyDesc": "OcearoCore AI staat klaar om vaartgegevens te verwerken en strategische missieinzichten te bieden.",
+    "diagnosticReadyDesc": "OnWatchCore AI staat klaar om vaartgegevens te verwerken en strategische missieinzichten te bieden.",
     "editEntry": "Vermelding bewerken",
     "manualEntry": "Handmatige vermelding",
     "author": "Auteur",
@@ -449,7 +449,7 @@
     "noteCol": "Notitie",
     "speed": "Snelheid",
     "coord": "Coörd.",
-    "ocearoCoreNotEnabled": "OcearoCore is niet ingeschakeld"
+    "onwatchCoreNotEnabled": "OnWatchCore is niet ingeschakeld"
   },
   "motor": {
     "engine": "Motor",
