@@ -10,10 +10,10 @@ import {
   Area,
   AreaChart
 } from 'recharts';
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 
 const LineChart = ({ data, dataKey, color, scale, label, unit, showPoints = false, lineWidth = 2, fillGradient = false }) => {
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
 
   const validValues = data.filter(item => item[dataKey] !== null && item[dataKey] !== undefined);
 
