@@ -2,7 +2,7 @@ import React, { useRef, useMemo, useState, useEffect, useCallback } from 'react'
 import { useFrame } from '@react-three/fiber';
 import * as THREE from 'three'; // Import THREE for Color
 
-import { useOcearoContext, toKnots, toDegrees, oRed } from '../../context/OcearoContext';
+import { useonwatchContext, toKnots, toDegrees, oRed } from '../../context/onwatchContext';
 import { useSignalKPaths } from '../../hooks/useSignalK';
 import { useAIS } from './AISContext';
 import AISBoat from './AISBoat'; // Assuming AISBoat accepts onClick prop now
