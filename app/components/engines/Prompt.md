@@ -1,5 +1,5 @@
 
-"Please design a new 'Motor View' for the ocearo UI. This view should display comprehensive engine and related system information. The data will be sourced from the following Signal K paths. Ensure the UI clearly distinguishes between multiple engines/tanks/batteries if present, using the instance number from the Signal K path.
+"Please design a new 'Motor View' for the onwatch UI. This view should display comprehensive engine and related system information. The data will be sourced from the following Signal K paths. Ensure the UI clearly distinguishes between multiple engines/tanks/batteries if present, using the instance number from the Signal K path.
 Respect the style and color scheme of the battery view.
 
 Primary Engine Data (per engine instance):
