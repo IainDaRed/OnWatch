@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useEffect } from 'react';
 import { Vector3, MathUtils } from 'three';
 import { Sphere } from '@react-three/drei';
-import { oGreen, oRed, oYellow, useOcearoContext } from '../../context/OcearoContext';
+import { oGreen, oRed, oYellow, useonwatchContext } from '../../context/onwatchContext';
 import { useSignalKPath, useSignalKPaths } from '../../hooks/useSignalK';
 import signalKService from '../../services/SignalKService';
 import configService from '../../settings/ConfigService';
@@ -117,7 +117,7 @@ const ParallelepipedLine = ({ start, end, color, width = 0.2, height = 0.1, dash
 };
 
 const LayLines3D = ({ outerRadius = 10 }) => {
-    const { convertLatLonToXY } = useOcearoContext();
+    const { convertLatLonToXY } = useonwatchContext();
     const debugMode = configService.get('debugMode');
     
     // Subscribe to relevant SignalK paths
