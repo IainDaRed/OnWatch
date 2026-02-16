@@ -1,10 +1,10 @@
 {
-  "name": "ocearo-ui",
+"name": "signalk-redseas-ui",
   "version": "2.0.0",
-  "private": false,
-  "description": "Ocean Robot UI: 3D visualization dashboard for signalk",
+  "private": true,
+"description": "Red Seas custom offshore navigation dashboard for Signal K",
   "license": "Apache-2.0",
-  "author": "Matthieu Laborie",
+"author": "Red Seas"
   "repository": {
     "type": "git",
     "url": "git+https://github.com/laborima/ocearo-ui.git"
