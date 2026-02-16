@@ -1,12 +1,12 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { toDegrees, oBlue, useOcearoContext, oRed, oYellow, oNight, oGray, oGray2 } from '../context/OcearoContext';
+import { toDegrees, oBlue, useonwatchContext, oRed, oYellow, oNight, oGray, oGray2 } from '../context/onwatchContext';
 import { useSignalKPath } from '../hooks/useSignalK';
 import { drawAttitudeInstrument } from '../../lib/AttitudeDrawing';
 import { useTranslation } from 'react-i18next';
 
 export default function ThreeDBoatAttitudeIndicator() {
   const { t } = useTranslation();
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   const canvasRef = useRef(null);
   const [displayMode, setDisplayMode] = useState('canvas'); // 'canvas' or 'text'
   
