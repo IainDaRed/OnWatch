@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useSignalKPath } from '../../hooks/useSignalK';
 import BaseWidget from './BaseWidget';
 import { useNavigation } from '../../context/NavigationContext';
-import { toDegrees } from '../../context/OcearoContext';
+import { toDegrees } from '../../context/onwatchContext';
 import { convertSpeedUnit, getSpeedUnitLabel, convertDistanceUnit, getDistanceUnitLabel } from '../../utils/UnitConversions';
 import configService from '../../settings/ConfigService';
 import { 
