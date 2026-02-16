@@ -9,7 +9,7 @@
 
 import React, { createContext, useState, useEffect, useContext, useCallback, useRef, useMemo } from 'react';
 import signalKService from '../services/SignalKService';
-import { useOcearoContext } from './OcearoContext';
+import { useonwatchContext } from './onwatchContext';
 import { useSignalKPaths } from '../hooks/useSignalK';
 
 const TideContext = createContext();
@@ -201,7 +201,7 @@ const fetchLocalTideData = async (updateSignalKData) => {
 };
 
 export const TideContextProvider = ({ children }) => {
-    const { updateSignalKData } = useOcearoContext();
+    const { updateSignalKData } = useonwatchContext();
 
     const skValues = useSignalKPaths(TIDE_PATHS);
 
