@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
   ReferenceLine
 } from 'recharts';
-import { oBlue, oGreen, useOcearoContext } from '../../context/OcearoContext';
+import { oBlue, oGreen, useonwatchContext } from '../../context/onwatchContext';
 import BaseWidget from './BaseWidget';
 import configService from '../../settings/ConfigService';
 import { useSignalKPaths } from '../../hooks/useSignalK';
