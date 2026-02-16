@@ -1,4 +1,4 @@
-Je veux que tu créer la vue logbook dans ocearo-ui. Elle doit être dans le même thème que les autres vues.
+Je veux que tu créer la vue logbook dans onwatch-ui. Elle doit être dans le même thème que les autres vues.
 
  Elle doit contenir un bouton Jarvis permettant d'ajouter une entrer automatiquement.
 
