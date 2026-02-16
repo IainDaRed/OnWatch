@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import { useOcearoContext, convertTemperature } from '../context/OcearoContext';
+import { useonwatchContext, convertTemperature } from '../context/onwatchContext';
 import { useSignalKPaths } from '../hooks/useSignalK';
 import { BATTERY_CONFIG, estimateStateOfCharge, getBatteryColorClass, isBatteryCharging } from '../utils/BatteryUtils';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,7 +17,7 @@ import * as THREE from 'three';
 
 const BatteryMonitor = () => {
   const { t } = useTranslation();
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   const secondaryTextClass = nightMode ? 'text-oNight' : 'text-hud-secondary';
   const mutedTextClass = nightMode ? 'text-oNight/70' : 'text-hud-muted';
   const [activeTab, setActiveTab] = useState('battery'); // battery, graph, performance
@@ -124,8 +124,8 @@ const BatteryMonitor = () => {
 
   // Find Three.js renderer
   useEffect(() => {
-    if (window.__OCEARO_RENDERER) {
-      rendererRef.current = window.__OCEARO_RENDERER;
+    if (window.__onwatch_RENDERER) {
+      rendererRef.current = window.__onwatch_RENDERER;
     }
   }, []);
 
@@ -148,7 +148,7 @@ const BatteryMonitor = () => {
           memory = Math.round(window.performance.memory.usedJSHeapSize / (1024 * 1024));
         }
         
-        const info = rendererRef.current?.info || window.__OCEARO_RENDER_INFO;
+        const info = rendererRef.current?.info || window.__onwatch_RENDER_INFO;
         if (info) {
           drawCalls = info.render?.calls || 0;
           triangles = info.render?.triangles || 0;
