@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 import { useSignalKPath } from '../hooks/useSignalK';
 
 const ThreeDBoatPositionDateIndicator = () => {
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   const position = useSignalKPath('navigation.position');
   const [dateTime, setDateTime] = useState(new Date());
 
