@@ -121,19 +121,6 @@ Or install it in Signal K using the NPM package: https://www.npmjs.com/package/o
 
 ---
 
-## **Contributing**
-
-Your support and involvement make onwatch UI better! Here are some ways you can contribute:
-
-- Report bugs: Help me squash issues by letting me know when something isn't working as expected.
-- Suggest features: Share your ideas for new features or improvements your feedback shapes the project!
-- Contribute code: Submit pull requests to add features, fix bugs, or improve documentation.
-- Support the project: Help fund the purchase of webcams, and sensors by buying me a coffee.
-
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/laborima)
-
----
-
 ## **Development and Deployment**
 
 ### Building
