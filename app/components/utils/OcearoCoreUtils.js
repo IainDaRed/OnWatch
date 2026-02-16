@@ -1,14 +1,14 @@
 /**
- * OcearoCoreUtils - Centralized OcearoCore API utilities
- * Handles all interactions with the ocearo-core plugin
+ * onwatchCoreUtils - Centralized onwatchCore API utilities
+ * Handles all interactions with the onwatch-core plugin
  */
 
 import configService from '../settings/ConfigService';
 
 /**
- * Base configuration for OcearoCore API calls
+ * Base configuration for onwatchCore API calls
  */
-const getOcearoCoreConfig = () => {
+const getonwatchCoreConfig = () => {
   const config = configService.getAll();
   
   // Determine the base URL - use configured URL if set, otherwise compute from window location
@@ -22,7 +22,7 @@ const getOcearoCoreConfig = () => {
   }
   
   return {
-    enabled: config.ocearoCoreEnabled !== false,
+    enabled: config.onwatchCoreEnabled !== false,
     baseUrl,
     timeout: 10000, // 10 second timeout
     useAuthentication: config.useAuthentication || false,
@@ -32,28 +32,28 @@ const getOcearoCoreConfig = () => {
 };
 
 /**
- * Check if OcearoCore is enabled
+ * Check if onwatchCore is enabled
  */
-export const isOcearoCoreEnabled = () => {
-  const config = getOcearoCoreConfig();
+export const isonwatchCoreEnabled = () => {
+  const config = getonwatchCoreConfig();
   return config.enabled;
 };
 
 /**
- * Make a generic API call to OcearoCore plugin
+ * Make a generic API call to onwatchCore plugin
  */
-export const makeOcearoCoreApiCall = async (endpoint, options = {}) => {
-  const config = getOcearoCoreConfig();
+export const makeonwatchCoreApiCall = async (endpoint, options = {}) => {
+  const config = getonwatchCoreConfig();
   
   if (!config.enabled) {
-    throw new Error('OcearoCore is not enabled');
+    throw new Error('onwatchCore is not enabled');
   }
 
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), config.timeout);
 
   try {
-    const url = `${config.baseUrl}/plugins/ocearo-core${endpoint}`;
+    const url = `${config.baseUrl}/plugins/onwatch-core${endpoint}`;
 
     // Build headers with optional Basic Auth if username is provided
     const headers = {
@@ -92,12 +92,12 @@ export const makeOcearoCoreApiCall = async (endpoint, options = {}) => {
     if (!response.ok) {
       const contentType = response.headers.get('content-type') || '';
       if (response.status === 404 || contentType.includes('text/html')) {
-        const notFoundError = new Error(`OcearoCore plugin not available at ${url}`);
+        const notFoundError = new Error(`onwatchCore plugin not available at ${url}`);
         notFoundError.name = 'NetworkError';
         throw notFoundError;
       }
       const errorText = await response.text().catch(() => response.statusText);
-      throw new Error(`OcearoCore API error (${response.status}): ${errorText}`);
+      throw new Error(`onwatchCore API error (${response.status}): ${errorText}`);
     }
 
     return await response.json();
@@ -105,13 +105,13 @@ export const makeOcearoCoreApiCall = async (endpoint, options = {}) => {
     clearTimeout(timeoutId);
     
     if (error.name === 'AbortError') {
-      const timeoutError = new Error('OcearoCore API request timed out');
+      const timeoutError = new Error('onwatchCore API request timed out');
       timeoutError.name = 'TimeoutError';
       throw timeoutError;
     }
 
     if (error.name === 'TypeError' && (error.message === 'Failed to fetch' || error.message.includes('NetworkError'))) {
-      const networkError = new Error(`OcearoCore server unreachable at ${config.baseUrl}`);
+      const networkError = new Error(`onwatchCore server unreachable at ${config.baseUrl}`);
       networkError.name = 'NetworkError';
       throw networkError;
     }
@@ -121,13 +121,13 @@ export const makeOcearoCoreApiCall = async (endpoint, options = {}) => {
 };
 
 /**
- * Get OcearoCore system status
+ * Get onwatchCore system status
  */
-export const getOcearoCoreStatus = async () => {
+export const getonwatchCoreStatus = async () => {
   try {
-    return await makeOcearoCoreApiCall('/status');
+    return await makeonwatchCoreApiCall('/status');
   } catch (error) {
-    console.error('Failed to get OcearoCore status:', error);
+    console.error('Failed to get onwatchCore status:', error);
     return {
       error: error.message,
       available: false
@@ -136,7 +136,7 @@ export const getOcearoCoreStatus = async () => {
 };
 
 /**
- * Request manual analysis from OcearoCore
+ * Request manual analysis from onwatchCore
  */
 export const requestAnalysis = async (analysisType, data = {}) => {
   const validTypes = ['weather', 'sail', 'alerts', 'status', 'logbook'];
@@ -145,7 +145,7 @@ export const requestAnalysis = async (analysisType, data = {}) => {
     throw new Error(`Invalid analysis type. Valid types: ${validTypes.join(', ')}`);
   }
 
-  return await makeOcearoCoreApiCall('/analyze', {
+  return await makeonwatchCoreApiCall('/analyze', {
     method: 'POST',
     body: JSON.stringify({
       type: analysisType,
@@ -155,25 +155,25 @@ export const requestAnalysis = async (analysisType, data = {}) => {
 };
 
 /**
- * Update OcearoCore mode
+ * Update onwatchCore mode
  */
-export const updateOcearoCoreMode = async (mode) => {
+export const updateonwatchCoreMode = async (mode) => {
   const validModes = ['sailing', 'anchored', 'motoring', 'moored', 'racing'];
   
   if (!validModes.includes(mode)) {
     throw new Error(`Invalid mode. Valid modes: ${validModes.join(', ')}`);
   }
 
-  return await makeOcearoCoreApiCall('/mode', {
+  return await makeonwatchCoreApiCall('/mode', {
     method: 'POST',
     body: JSON.stringify({ mode })
   });
 };
 
 /**
- * Make OcearoCore speak text
+ * Make onwatchCore speak text
  */
-export const OcearoCoreSpeak = async (text, priority = 'normal') => {
+export const onwatchCoreSpeak = async (text, priority = 'normal') => {
   const validPriorities = ['low', 'normal', 'high'];
   
   if (!text || typeof text !== 'string') {
@@ -188,31 +188,31 @@ export const OcearoCoreSpeak = async (text, priority = 'normal') => {
     throw new Error(`Invalid priority. Valid priorities: ${validPriorities.join(', ')}`);
   }
 
-  return await makeOcearoCoreApiCall('/speak', {
+  return await makeonwatchCoreApiCall('/speak', {
     method: 'POST',
     body: JSON.stringify({ text, priority })
   });
 };
 
 /**
- * Get OcearoCore memory information
+ * Get onwatchCore memory information
  */
-export const getOcearoCoreMemory = async () => {
-  return await makeOcearoCoreApiCall('/memory');
+export const getonwatchCoreMemory = async () => {
+  return await makeonwatchCoreApiCall('/memory');
 };
 
 /**
- * Get OcearoCore memory statistics
+ * Get onwatchCore memory statistics
  */
-export const getOcearoCoreMemoryStats = async () => {
-  return await makeOcearoCoreApiCall('/memory/stats');
+export const getonwatchCoreMemoryStats = async () => {
+  return await makeonwatchCoreApiCall('/memory/stats');
 };
 
 /**
- * Update OcearoCore memory context
+ * Update onwatchCore memory context
  */
-export const updateOcearoCoreContext = async (vesselInfo, destination) => {
-  return await makeOcearoCoreApiCall('/memory/context', {
+export const updateonwatchCoreContext = async (vesselInfo, destination) => {
+  return await makeonwatchCoreApiCall('/memory/context', {
     method: 'POST',
     body: JSON.stringify({
       vesselInfo,
@@ -224,7 +224,7 @@ export const updateOcearoCoreContext = async (vesselInfo, destination) => {
 /**
  * Test LLM functionality
  */
-export const testOcearoCoreLLM = async (prompt) => {
+export const testonwatchCoreLLM = async (prompt) => {
   if (!prompt || typeof prompt !== 'string') {
     throw new Error('Prompt is required and must be a string');
   }
@@ -233,7 +233,7 @@ export const testOcearoCoreLLM = async (prompt) => {
     throw new Error('Prompt too long (max 2000 characters)');
   }
 
-  return await makeOcearoCoreApiCall('/llm/test', {
+  return await makeonwatchCoreApiCall('/llm/test', {
     method: 'POST',
     body: JSON.stringify({ prompt })
   });
@@ -242,9 +242,9 @@ export const testOcearoCoreLLM = async (prompt) => {
 // ===== LOGBOOK-SPECIFIC FUNCTIONS =====
 
 /**
- * Get logbook entries with OcearoCore analysis
+ * Get logbook entries with onwatchCore analysis
  */
-export const getOcearoCoreLogbookEntries = async (startDate, endDate) => {
+export const getonwatchCoreLogbookEntries = async (startDate, endDate) => {
   const params = new URLSearchParams();
   if (startDate) params.append('startDate', startDate);
   if (endDate) params.append('endDate', endDate);
@@ -252,13 +252,13 @@ export const getOcearoCoreLogbookEntries = async (startDate, endDate) => {
   const queryString = params.toString();
   const endpoint = `/logbook/entries${queryString ? `?${queryString}` : ''}`;
   
-  return await makeOcearoCoreApiCall(endpoint);
+  return await makeonwatchCoreApiCall(endpoint);
 };
 
 /**
- * Get logbook statistics from OcearoCore
+ * Get logbook statistics from onwatchCore
  */
-export const getOcearoCoreLogbookStats = async (startDate, endDate) => {
+export const getonwatchCoreLogbookStats = async (startDate, endDate) => {
   const params = new URLSearchParams();
   if (startDate) params.append('startDate', startDate);
   if (endDate) params.append('endDate', endDate);
@@ -266,28 +266,28 @@ export const getOcearoCoreLogbookStats = async (startDate, endDate) => {
   const queryString = params.toString();
   const endpoint = `/logbook/stats${queryString ? `?${queryString}` : ''}`;
   
-  return await makeOcearoCoreApiCall(endpoint);
+  return await makeonwatchCoreApiCall(endpoint);
 };
 
 /**
- * Request OcearoCore analysis of logbook data
+ * Request onwatchCore analysis of logbook data
  */
-export const analyzeLogbookWithOcearoCore = async (entries = []) => {
-  return await makeOcearoCoreApiCall('/logbook/analyze', {
+export const analyzeLogbookWithonwatchCore = async (entries = []) => {
+  return await makeonwatchCoreApiCall('/logbook/analyze', {
     method: 'POST',
     body: JSON.stringify({ entries })
   });
 };
 
 /**
- * Generate AI-enhanced logbook entry with OcearoCore
+ * Generate AI-enhanced logbook entry with onwatchCore
  */
-export const generateOcearoCoreLogbookEntry = async (currentData) => {
+export const generateonwatchCoreLogbookEntry = async (currentData) => {
   if (!currentData || typeof currentData !== 'object') {
     throw new Error('Current data is required and must be an object');
   }
 
-  return await makeOcearoCoreApiCall('/logbook/entry', {
+  return await makeonwatchCoreApiCall('/logbook/entry', {
     method: 'POST',
     body: JSON.stringify({ currentData })
   });
@@ -462,7 +462,7 @@ export const estimateTankLevel = (fuelEntries, currentEngineHours, tankCapacity,
 // ===== LOGBOOK PROXY FUNCTIONS =====
 
 /**
- * Fetch all logbook entries through OcearoCore proxy
+ * Fetch all logbook entries through onwatchCore proxy
  */
 export const fetchLogbookEntries = async (startDate, endDate) => {
   const params = new URLSearchParams();
@@ -472,25 +472,25 @@ export const fetchLogbookEntries = async (startDate, endDate) => {
   const queryString = params.toString();
   const endpoint = `/logbook/all-entries${queryString ? `?${queryString}` : ''}`;
   
-  return await makeOcearoCoreApiCall(endpoint);
+  return await makeonwatchCoreApiCall(endpoint);
 };
 
 /**
- * Add a new logbook entry through OcearoCore proxy
+ * Add a new logbook entry through onwatchCore proxy
  */
 export const addLogbookEntry = async (entry) => {
   if (!entry || typeof entry !== 'object') {
     throw new Error('Entry data is required and must be an object');
   }
 
-  return await makeOcearoCoreApiCall('/logbook/add-entry', {
+  return await makeonwatchCoreApiCall('/logbook/add-entry', {
     method: 'POST',
     body: JSON.stringify(entry)
   });
 };
 
 /**
- * Collect current vessel data for OcearoCore analysis
+ * Collect current vessel data for onwatchCore analysis
  */
 export const collectCurrentVesselDataFromValues = (skValues) => {
   const getVal = (path) => skValues[path] ?? null;
@@ -519,7 +519,7 @@ export const collectCurrentVesselDataFromValues = (skValues) => {
 };
 
 /**
- * Collect current vessel data for OcearoCore analysis (Legacy version using getSignalKValue)
+ * Collect current vessel data for onwatchCore analysis (Legacy version using getSignalKValue)
  * @deprecated Use collectCurrentVesselDataFromValues instead
  */
 export const collectCurrentVesselData = (getSignalKValue) => {
@@ -546,24 +546,24 @@ export const collectCurrentVesselData = (getSignalKValue) => {
 };
 
 /**
- * Error handler for OcearoCore API calls
+ * Error handler for onwatchCore API calls
  */
-export const handleOcearoCoreError = (error, context = 'OcearoCore operation') => {
+export const handleonwatchCoreError = (error, context = 'onwatchCore operation') => {
   if (error.name === 'NetworkError') {
-    console.warn(`${context} failed: OcearoCore server unreachable.`, error.message);
-    return 'OcearoCore server unreachable. Please check if the service is running.';
+    console.warn(`${context} failed: onwatchCore server unreachable.`, error.message);
+    return 'onwatchCore server unreachable. Please check if the service is running.';
   }
   
   if (error.name === 'TimeoutError' || error.message.includes('timed out')) {
-    console.warn(`${context} failed: OcearoCore request timed out.`);
-    return 'OcearoCore service is not responding (timeout)';
+    console.warn(`${context} failed: onwatchCore request timed out.`);
+    return 'onwatchCore service is not responding (timeout)';
   }
 
   console.error(`${context} failed:`, error);
   
   // Return user-friendly error messages
   if (error.message.includes('not enabled')) {
-    return 'OcearoCore is not enabled in the configuration';
+    return 'onwatchCore is not enabled in the configuration';
   }
   
   // Check for logbook-specific errors
@@ -589,9 +589,9 @@ export const handleOcearoCoreError = (error, context = 'OcearoCore operation') =
 };
 
 /**
- * Batch multiple OcearoCore operations with error handling
+ * Batch multiple onwatchCore operations with error handling
  */
-export const batchOcearoCoreOperations = async (operations) => {
+export const batchonwatchCoreOperations = async (operations) => {
   const results = [];
   
   for (const operation of operations) {
@@ -601,7 +601,7 @@ export const batchOcearoCoreOperations = async (operations) => {
     } catch (error) {
       results.push({ 
         success: false, 
-        error: handleOcearoCoreError(error, 'Batch operation') 
+        error: handleonwatchCoreError(error, 'Batch operation') 
       });
     }
   }
@@ -610,11 +610,11 @@ export const batchOcearoCoreOperations = async (operations) => {
 };
 
 /**
- * Check OcearoCore service health
+ * Check onwatchCore service health
  */
-export const checkOcearoCoreHealth = async () => {
+export const checkonwatchCoreHealth = async () => {
   try {
-    const status = await getOcearoCoreStatus();
+    const status = await getonwatchCoreStatus();
     return {
       healthy: !status.error,
       status,
@@ -623,33 +623,33 @@ export const checkOcearoCoreHealth = async () => {
   } catch (error) {
     return {
       healthy: false,
-      error: handleOcearoCoreError(error, 'Health check'),
+      error: handleonwatchCoreError(error, 'Health check'),
       timestamp: new Date().toISOString()
     };
   }
 };
 
-const OcearoCoreUtils = {
+const onwatchCoreUtils = {
   // Core functions
-  isOcearoCoreEnabled,
-  getOcearoCoreStatus,
+  isonwatchCoreEnabled,
+  getonwatchCoreStatus,
   requestAnalysis,
-  updateOcearoCoreMode,
-  OcearoCoreSpeak,
+  updateonwatchCoreMode,
+  onwatchCoreSpeak,
   
   // Memory functions
-  getOcearoCoreMemory,
-  getOcearoCoreMemoryStats,
-  updateOcearoCoreContext,
+  getonwatchCoreMemory,
+  getonwatchCoreMemoryStats,
+  updateonwatchCoreContext,
   
   // LLM functions
-  testOcearoCoreLLM,
+  testonwatchCoreLLM,
   
   // Logbook functions
-  getOcearoCoreLogbookEntries,
-  getOcearoCoreLogbookStats,
-  analyzeLogbookWithOcearoCore,
-  generateOcearoCoreLogbookEntry,
+  getonwatchCoreLogbookEntries,
+  getonwatchCoreLogbookStats,
+  analyzeLogbookWithonwatchCore,
+  generateonwatchCoreLogbookEntry,
   collectCurrentVesselDataFromValues,
   collectCurrentVesselData,
   
@@ -664,9 +664,9 @@ const OcearoCoreUtils = {
   estimateTankLevel,
   
   // Utility functions
-  handleOcearoCoreError,
-  batchOcearoCoreOperations,
-  checkOcearoCoreHealth
+  handleonwatchCoreError,
+  batchonwatchCoreOperations,
+  checkonwatchCoreHealth
 };
 
-export default OcearoCoreUtils;
+export default onwatchCoreUtils;
