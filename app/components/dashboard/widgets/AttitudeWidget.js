@@ -3,7 +3,7 @@ import React, { useRef, useEffect, useMemo } from 'react';
 import { useSignalKPath } from '../../hooks/useSignalK';
 import BaseWidget from './BaseWidget';
 import { useTranslation } from 'react-i18next';
-import { toDegrees, oBlue, oRed, oYellow, oGreen, oNight, oGray, oGray2, useOcearoContext } from '../../context/OcearoContext';
+import { toDegrees, oBlue, oRed, oYellow, oGreen, oNight, oGray, oGray2, useonwatchContext } from '../../context/onwatchContext';
 import configService from '../../settings/ConfigService';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCompass, faPlane } from '@fortawesome/free-solid-svg-icons';
@@ -22,7 +22,7 @@ const getThemeColors = () => {
 
 export default function AttitudeWidget() {
   const { t } = useTranslation();
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   const canvasRef = useRef(null);
   const debugMode = configService.get('debugMode');
 
