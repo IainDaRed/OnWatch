@@ -426,7 +426,7 @@
     "rawTelemetryData": "SUROWE DANE TELEMETRYCZNE",
     "generated": "WYGENEROWANO:",
     "diagnosticReady": "Diagnostyka gotowa",
-    "diagnosticReadyDesc": "AI OcearoCore jest gotowe do przetwarzania danych rejsowych i dostarczania strategicznych informacji.",
+    "diagnosticReadyDesc": "AI OnWatchCore jest gotowe do przetwarzania danych rejsowych i dostarczania strategicznych informacji.",
     "editEntry": "Edytuj wpis",
     "manualEntry": "Wpis ręczny",
     "author": "Autor",
@@ -449,7 +449,7 @@
     "noteCol": "Notatka",
     "speed": "Prędkość",
     "coord": "Wsp.",
-    "ocearoCoreNotEnabled": "OcearoCore nie jest włączony"
+    "onwatchCoreNotEnabled": "OnWatchCore nie jest włączony"
   },
   "motor": {
     "engine": "Silnik",
