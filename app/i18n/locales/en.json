@@ -462,7 +462,7 @@
     "rawTelemetryData": "RAW TELEMETRY DATA",
     "generated": "GENERATED:",
     "diagnosticReady": "Diagnostic Ready",
-    "diagnosticReadyDesc": "OcearoCore AI is standing by to process cruise data and provide strategic mission insights.",
+    "diagnosticReadyDesc": "OnWatchCore AI is standing by to process cruise data and provide strategic mission insights.",
     "editEntry": "Edit Entry",
     "manualEntry": "Manual Entry",
     "author": "Author",
@@ -485,7 +485,7 @@
     "noteCol": "Note",
     "speed": "Speed",
     "coord": "Coord",
-    "ocearoCoreNotEnabled": "OcearoCore is not enabled"
+    "onwatchCoreNotEnabled": "OnWatchCore is not enabled"
   },
   "motor": {
     "engine": "Engine",
