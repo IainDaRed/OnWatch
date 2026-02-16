@@ -1,14 +1,14 @@
 import React, { Suspense, useRef, useMemo } from 'react';
 import { OrbitControls, PerspectiveCamera, Html, Environment } from '@react-three/drei';
 import SailBoat3D from '../SailBoat3D';
-import { useOcearoContext, convertWindSpeed } from '../../context/OcearoContext';
+import { useonwatchContext, convertWindSpeed } from '../../context/onwatchContext';
 import { useSignalKPaths } from '../../hooks/useSignalK';
 import WindSector3D from '../compass/WindSector3D';
 import BoatNavigationSystem from './BoatNavigationSystem';
 import Current3D from '../compass/Current3D';
 
 const ThreeDParkAssistBoat = ({ onUpdateInfoPanel }) => {
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   const sailBoatRef = useRef();
   
   // Define paths for subscription
@@ -67,7 +67,7 @@ const ThreeDParkAssistBoat = ({ onUpdateInfoPanel }) => {
         minPolarAngle={Math.PI / 4}
       />
 
-      <Environment files="./assets/ocearo_env.hdr" background={false} intensity={0.6} />
+      <Environment files="./assets/onwatch_env.hdr" background={false} intensity={0.6} />
 
       <ambientLight intensity={0.2} />
 
