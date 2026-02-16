@@ -166,7 +166,7 @@ export default function Home() {
     return (
         <ErrorBoundary>
             <I18nProvider>
-            <OcearoContextProvider>
+            <OnWatchContextProvider>
                 <WeatherContextProvider>
                 <TideContextProvider>
                     <div className="h-screen flex flex-col bg-hud-bg relative overflow-hidden">
@@ -208,7 +208,7 @@ export default function Home() {
                     </div>
                 </TideContextProvider>
                 </WeatherContextProvider>
-            </OcearoContextProvider>
+            </OnWatchContextProvider>
             </I18nProvider>
         </ErrorBoundary>
     );
