@@ -2,7 +2,7 @@
 import React, { Suspense, useMemo, useState } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Environment, OrbitControls } from '@react-three/drei';
-import { toDegrees, MS_TO_KNOTS, oBlue, oYellow, useOcearoContext } from '../../context/OcearoContext';
+import { toDegrees, MS_TO_KNOTS, oBlue, oYellow, useonwatchContext } from '../../context/onwatchContext';
 import { useSignalKPath } from '../../hooks/useSignalK';
 import BaseWidget from './BaseWidget';
 import { useTranslation } from 'react-i18next';
@@ -13,7 +13,7 @@ import ThreeDCompassView from '../../3dview/ThreeDCompassView';
 
 export default function BoatWidget3D() {
   const { t } = useTranslation();
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   const [isLoading, setIsLoading] = useState(true);
   
   // Use specialized hooks for better performance and targeted subscriptions
@@ -72,7 +72,7 @@ export default function BoatWidget3D() {
               target={[0, 0, 0]}
             />
             <Environment
-              files="./assets/ocearo_env.hdr"
+              files="./assets/onwatch_env.hdr"
               background={false}
               intensity={0.6}
               resolution={128}
