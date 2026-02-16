@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import configService from '../settings/ConfigService';
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 import { useSignalKPaths } from '../hooks/useSignalK';
 import { KNOTS_TO_MPS } from '../utils/UnitConversions';
 
@@ -13,7 +13,7 @@ const toRadians = (degrees) => (degrees * Math.PI) / 180;
  */
 const DebugView = () => {
     const { t } = useTranslation();
-    const { updateSignalKData } = useOcearoContext();
+    const { updateSignalKData } = useonwatchContext();
 
     const [windOverride, setWindOverride] = useState(() => configService.get('debugWindOverride') || false);
     const [overrideSpeed, setOverrideSpeed] = useState(() => configService.get('debugWindSpeed') ?? 10);
