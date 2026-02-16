@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useCallback } from 'react';
 import * as THREE from 'three';
 
-import { oBlue, oRed, oYellow } from '../../context/OcearoContext';
+import { oBlue, oRed, oYellow } from '../../context/onwatchContext';
 
 const CONSTANTS = {
   MOBILE_TEMPLATE: {
