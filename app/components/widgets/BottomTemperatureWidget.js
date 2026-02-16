@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 import { convertTemperatureUnit, getTemperatureUnitLabel } from '../utils/UnitConversions';
 import { useSignalKPaths } from '../hooks/useSignalK';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -73,7 +73,7 @@ const TemperatureDisplay = ({ mode, value, icon, nightMode }) => {
 
 const BottomTemperatureWidget = () => {
   const { t } = useTranslation();
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   const [availableModes, setAvailableModes] = useState([]);
   const [displayMode, setDisplayMode] = useState(null);
 
