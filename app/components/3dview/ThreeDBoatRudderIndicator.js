@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
-import { useOcearoContext } from '../context/OcearoContext';
+import { useonwatchContext } from '../context/onwatchContext';
 import { useSignalKPath } from '../hooks/useSignalK';
 
 const ThreeDBoatRudderIndicator = () => {
-    const { nightMode } = useOcearoContext();
+    const { nightMode } = useonwatchContext();
     const rudderAngleRadians = useSignalKPath('steering.rudderAngle', 0);
     const rudderAngle = useMemo(() => (rudderAngleRadians * 180) / Math.PI, [rudderAngleRadians]);
 
