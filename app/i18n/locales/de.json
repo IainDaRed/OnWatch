@@ -426,7 +426,7 @@
     "rawTelemetryData": "ROHE TELEMETRIEDATEN",
     "generated": "GENERIERT:",
     "diagnosticReady": "Diagnose bereit",
-    "diagnosticReadyDesc": "OcearoCore-KI steht bereit, um Fahrtdaten zu verarbeiten und strategische Missionseinblicke zu liefern.",
+    "diagnosticReadyDesc": "OnWatchCore-KI steht bereit, um Fahrtdaten zu verarbeiten und strategische Missionseinblicke zu liefern.",
     "editEntry": "Eintrag bearbeiten",
     "manualEntry": "Manueller Eintrag",
     "author": "Autor",
@@ -449,7 +449,7 @@
     "noteCol": "Notiz",
     "speed": "Geschwindigkeit",
     "coord": "Koord.",
-    "ocearoCoreNotEnabled": "OcearoCore ist nicht aktiviert"
+    "onwatchCoreNotEnabled": "OnWatchCore ist nicht aktiviert"
   },
   "motor": {
     "engine": "Motor",
