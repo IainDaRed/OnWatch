@@ -426,7 +426,7 @@
     "rawTelemetryData": "DATI TELEMETRIA GREZZI",
     "generated": "GENERATO:",
     "diagnosticReady": "Diagnostica pronta",
-    "diagnosticReadyDesc": "L'IA OcearoCore è pronta per elaborare i dati di crociera e fornire approfondimenti strategici.",
+    "diagnosticReadyDesc": "L'IA OnWatchCore è pronta per elaborare i dati di crociera e fornire approfondimenti strategici.",
     "editEntry": "Modifica voce",
     "manualEntry": "Voce manuale",
     "author": "Autore",
@@ -449,7 +449,7 @@
     "noteCol": "Nota",
     "speed": "Velocità",
     "coord": "Coord.",
-    "ocearoCoreNotEnabled": "OcearoCore non è abilitato"
+    "onwatchCoreNotEnabled": "OnWatchCore non è abilitato"
   },
   "motor": {
     "engine": "Motore",
