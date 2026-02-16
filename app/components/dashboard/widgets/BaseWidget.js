@@ -1,7 +1,7 @@
 'use client';
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useOcearoContext } from '../../context/OcearoContext';
+import { useonwatchContext } from '../../context/onwatchContext';
 
 /**
  * BaseWidget - A shared component for dashboard widgets to ensure UI consistency
@@ -16,7 +16,7 @@ const BaseWidget = ({
   children,
   className = ""
 }) => {
-  const { nightMode } = useOcearoContext();
+  const { nightMode } = useonwatchContext();
   
   const primaryTextClass = nightMode ? 'text-oNight' : 'text-hud-main';
   const mutedTextClass = nightMode ? 'text-oNight' : 'text-hud-muted';
