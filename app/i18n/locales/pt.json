@@ -426,7 +426,7 @@
     "rawTelemetryData": "DADOS DE TELEMETRIA EM BRUTO",
     "generated": "GERADO:",
     "diagnosticReady": "Diagnóstico pronto",
-    "diagnosticReadyDesc": "A IA OcearoCore está pronta para processar dados de cruzeiro e fornecer informações estratégicas.",
+    "diagnosticReadyDesc": "A IA OnWatchCore está pronta para processar dados de cruzeiro e fornecer informações estratégicas.",
     "editEntry": "Editar entrada",
     "manualEntry": "Entrada manual",
     "author": "Autor",
@@ -449,7 +449,7 @@
     "noteCol": "Nota",
     "speed": "Velocidade",
     "coord": "Coord.",
-    "ocearoCoreNotEnabled": "OcearoCore não está ativado"
+    "onwatchCoreNotEnabled": "OnWatchCore não está ativado"
   },
   "motor": {
     "engine": "Motor",
