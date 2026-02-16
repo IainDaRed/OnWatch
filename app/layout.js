@@ -15,7 +15,7 @@ const geistMono = localFont({
 });
 
 export const metadata = {
-    title: "Ocearo",
+    title: "OnWatch",
     description: "Sailing made smarter",
     manifest: './manifest.json', 
     icons: {
@@ -29,7 +29,7 @@ export const metadata = {
     },
     appleWebApp: {
         capable: true,
-        title: "Ocearo",
+        title: "OnWatch",
         statusBarStyle: 'black-translucent', 
     },
     formatDetection: {
